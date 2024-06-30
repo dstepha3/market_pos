@@ -37,7 +37,9 @@ function openModal(x) {
 
 <template>
   <div class="col-block">
-    <div class="block-heading">Messages</div>
+    <div class="block-heading">Messages
+      <div><RouterLink to="/messages">See All Messages</RouterLink></div>
+    </div>
     <div class="all-message-container">
       <div
         class="message"
@@ -63,6 +65,21 @@ function openModal(x) {
 <style scoped>
 .col-block {
   padding: 60px 40px;
+}
+.block-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.block-heading a {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--color-text);
+  font-size: 12px;
+  text-decoration: none;
+  transition: 0.3s all;
+}
+.block-heading a:hover {
+  color: #fff;
 }
 .message {
   font-size: 14px;

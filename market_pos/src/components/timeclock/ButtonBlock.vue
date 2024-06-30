@@ -1,23 +1,17 @@
 <script setup>
-defineProps({
-  user_clocked_in: {
-    type: Boolean,
-    required: true
-  },
-  user_on_break: {
-    type: Boolean,
-    required: true
-  }
-})
+
+import { useUserStore } from '@/stores/user'
+const user = useUserStore()
+
 </script>
 
 <template>
   <div class="col-block">
-    <div v-if="user_clocked_in == false" id="clockIn" class="btn">Clock In</div>
-    <div v-else id="clockOut" class="btn" :class="{ disabled: user_on_break }">Clock Out</div>
+    <div v-if="user.user_clocked_in == false" @click="user.userClockIn()" id="clockIn" class="btn">Clock In</div>
+    <div v-else id="clockOut" @click="user.userClockOut()" class="btn" :class="{ disabled: user.user_on_break }">Clock Out</div>
 
-    <div v-if="user_on_break == false" id="goBreak" class="btn" :class="{ disabled: !user_clocked_in }">Break</div>
-    <div v-else id="backBreak" class="btn">Return</div>
+    <div v-if="user.user_on_break == false" @click="user.userGoBreak()" id="goBreak" class="btn" :class="{ disabled: !user.user_clocked_in }">Break</div>
+    <div v-else id="backBreak" @click="user.userBackBreak()" class="btn">Return</div>
   </div>
 </template>
 

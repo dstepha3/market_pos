@@ -1,11 +1,65 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { useRouter } from 'vue-router'
 
 export const useUserStore = defineStore('user', () => {
-  const userID = ref(0)
-  const username = 'Daniel Stephan'
-  var user_clocked_in = true
-  var user_on_break = false
 
-  return { userID, username, user_clocked_in, user_on_break }
+  const router = useRouter();
+
+  const userID = ref('0316')
+  const username = ref('Daniel Stephan')
+  var user_clocked_in = ref(false)
+  var user_on_break = ref(false)
+
+  // var form_input = ref()
+
+  // const setUser = (id, username) => {
+  //   userID = id
+  //   username = username
+  // }
+
+  const userClockIn = () => {
+
+    const passed = validateUser();
+
+    if (passed){
+      user_clocked_in.value = true
+      router.push({ name: "dashboard" });
+    }
+    else{
+      return;
+    }
+    
+  }
+
+  const userClockOut = () => {
+    user_clocked_in.value = false
+    router.push({ name: "front_door" });
+  }
+
+  const userGoBreak = () => {
+    user_on_break.value = true
+  }
+
+  const userBackBreak = () => {
+    user_on_break.value = false
+  }
+
+  const validateUser = () => {
+    if(userID){
+      return true;
+    }
+  }
+
+  return { 
+    userID, 
+    username, 
+    user_clocked_in, 
+    user_on_break,
+  
+    userClockIn,
+    userClockOut,
+    userGoBreak,
+    userBackBreak
+  }
 })
