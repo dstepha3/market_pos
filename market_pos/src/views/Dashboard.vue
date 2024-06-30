@@ -11,6 +11,10 @@ const user = useUserStore()
   <main>
     <Header :username="user.username" :user_clocked_in='user.user_clocked_in' current_page="dashboard" />
 
-    dashboard
+    <div class="body">
+      <div class="container">
+        dashboard
+      </div>
+    </div>
   </main>
 </template>
