@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useStoreInfoStore = defineStore('store', () => {
-  const name = "Store Name"
+  const name = "Market POS"
 
   return { name }
 })

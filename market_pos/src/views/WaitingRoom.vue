@@ -1,14 +1,29 @@
 <script setup>
-import Header from '../components/header/MainHeader.vue'
-import Time from '../components/timeclock/TimeBlock.vue'
-import ButtonBlock from '../components/timeclock/ButtonBlock.vue'
-import MessageBlock from '../components/timeclock/MessageBlock.vue'
-import ActivityBlock from '../components/timeclock/ActivityBlock.vue'
-import { useUserStore } from '@/stores/user'
-import { useStoreInfoStore } from '@/stores/store'
+import { onMounted } from 'vue';
 
-const store = useStoreInfoStore()
-const user = useUserStore()
+import Header from '../components/header/MainHeader.vue';
+import Time from '../components/timeclock/TimeBlock.vue';
+import ButtonBlock from '../components/timeclock/ButtonBlock.vue';
+import MessageBlock from '../components/timeclock/MessageBlock.vue';
+import ActivityBlock from '../components/timeclock/ActivityBlock.vue';
+import MessageModal from '../components/timeclock/MessageModal.vue';
+
+import { useUserStore } from '@/stores/user';
+import { useStoreInfoStore } from '@/stores/store';
+import { useMessageStore } from '@/stores/message';
+
+const store = useStoreInfoStore();
+const user = useUserStore();
+const { messages, addMessage } = useMessageStore();
+
+function addNewMessage() {
+  addMessage('Guys &mdash; whoever keeps stealing my standwich is going to die.', new Date(), "Jessica Hartzell", 0);
+  addMessage('Thanks for chilling', new Date(), "Daniel Stephan", 1);
+}
+
+onMounted(() => {
+  addNewMessage();
+});
 
 </script>
 
@@ -21,7 +36,7 @@ const user = useUserStore()
         <div class="two-col-entry-layout">
           <div class="left-col">
             <Time :store_name="store.name" />
-            <MessageBlock messages="hi" />
+            <MessageBlock :messages="messages" />
           </div>
           <div class="right-col">
             <ButtonBlock :user_clocked_in='user.user_clocked_in' :user_on_break='user.user_on_break' />
@@ -30,6 +45,8 @@ const user = useUserStore()
         </div>
       </div>
     </div>
-    
+
+    <MessageModal />
+    <div id="modalOverlay"></div>
   </main>
 </template>

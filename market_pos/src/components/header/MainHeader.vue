@@ -11,6 +11,13 @@ const formattedDate = computed(() => {
 
 formattedDate.value = formattedDate
 
+const formattedTime = computed(() => {
+  const pad = (num) => num.toString().padStart(2, '0')
+  return `${dateAndTimeStore.formattedHours()}<span>:</span>${pad(dateAndTimeStore.minutes)}`
+})
+
+formattedTime.value = formattedTime
+
 defineProps({
   username: {
     type: String,
@@ -33,7 +40,7 @@ defineProps({
 let timer
 
 onMounted(() => {
-  timer = setInterval(dateAndTimeStore.updateTime, 6000)
+  timer = setInterval(dateAndTimeStore.updateTime, 60000)
 })
 
 onUnmounted(() => {
@@ -52,10 +59,10 @@ onUnmounted(() => {
                     <RouterLink v-if="current_page != 'dashboard' && user_clocked_in == true && user_on_break == false" to="/dashboard"><font-awesome-icon icon="fa-solid fa-house" /> Dashboard</RouterLink>
                 </div>
                 <div class="date-container">
-                    <span class="datae" v-html:="formattedDate"></span>
+                    <span class="date" v-html:="formattedDate"></span>
                 </div>
                 <div class="user-container" v-if="current_page != 'front_door'">
-                    <span class="welcome-message"></span>
+                    <div v-if="current_page != 'waiting_room'" id="header-time"><font-awesome-icon icon="fa-solid fa-clock" /> <span v-html:="formattedTime" class="time"></span> {{ dateAndTimeStore.period() }} </div>
                     <span class="username">{{ username }}</span>
                 </div>
             </div>
@@ -71,7 +78,7 @@ header{
   position: relative;
   z-index: 50;
 
-  position: absolute;
+  position: sticky;
   top: 0;
   width: 100%;
   min-height: 45px;
@@ -93,9 +100,9 @@ header .container{
 }
 #return-btn{
     justify-content: flex-start;
-    column-gap: 30px;
+    column-gap: 50px;
 }
-#return-btn a{
+#return-btn * {
     color: var(--color-text);
     text-decoration: none;
     transition: 0.3s all;
@@ -106,17 +113,37 @@ header .container{
     font-size: 12px;
     line-height: 16px;
 }
+#return-btn a{
+  column-gap: 13px;
+}
+
+#return-btn #header-time svg,
 #return-btn a svg{
-    font-size: 16px;
+    font-size: 15px;
     line-height: 16px;
 }
 #return-btn a:hover{
     color: #fff;
 }
 .header-inner .user-container{
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
+    column-gap: 50px;
     font-size: 12px;
     line-height: 16px;
-
+}
+.header-inner .user-container *{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 10px;
+}
+.header-inner .user-container span.time{
+  column-gap: 5px;
+}
+#header-time{
+  min-width: 70px;
+  max-width: 72px;
 }
 </style>

@@ -3,18 +3,21 @@
 /*************************/
 /******  APP + BODY  *****/
 /*************************/
+
+main{
+  position: relative;
+}
 #app {
   font-family: "Open Sans", sans-serif;
 }
 #app .body{
   padding: 55px 0;
-  margin-top: 45px;
   background: linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.35) 100%),url('https://troyersdutchmarket.com/wp-content/uploads/2023/04/old-black-bamboo-background-design-as-background-min-scaled.jpg');    background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   min-height: 94vh;
-  max-height: calc(100vh - 45px);
+  /*max-height: calc(100vh - 45px);*/
 }
 .container{
   max-width: 1280px;
@@ -33,7 +36,7 @@
 /*************************/
 .two-col-entry-layout{
   display: flex;
-  column-gap: 80px;
+  column-gap: 60px;
   height: 100%;
   align-items: flex-start;
   justify-content: center;
@@ -44,7 +47,7 @@
 }
 .two-col-entry-layout .left-col{
   width: 100%;
-  max-width: 745px;
+  max-width: 765px;
 }
 .two-col-entry-layout .col-block{
   width: 100%;
@@ -67,4 +70,18 @@
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 2.5px solid #0d0d0d;
+}
+
+#modalOverlay{
+  display: none;
+  z-index: 30;
+
+  background-color: rgba(13, 13, 13,0.75);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
