@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const useUserStore = defineStore('user', () => {
   const userID = ref(0)
   const username = "Daniel Stephan"
-  var user_clocked_in = false
+  var user_clocked_in = true
 
   return { userID, username, user_clocked_in }
 })

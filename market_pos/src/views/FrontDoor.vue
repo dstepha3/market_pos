@@ -1,7 +1,7 @@
 <script setup>
 import Header from '../components/header/MainHeader.vue'
-import Time from '../components/timeclock/blocks/TimeBlock.vue'
-import LoginForm from '../components/timeclock/blocks/LoginBlock.vue'
+import Time from '../components/timeclock/TimeBlock.vue'
+import LoginForm from '../components/timeclock/LoginBlock.vue'
 import { useUserStore } from '@/stores/user'
 import { useStoreInfoStore } from '@/stores/store'
 

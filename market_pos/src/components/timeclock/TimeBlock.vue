@@ -43,6 +43,7 @@ onUnmounted(() => {
 <style scoped>
 #time-banner{
   width: 100%;
+  max-width: 745px;
   padding-bottom: 20px;
   margin: 0 0 40px;
 }

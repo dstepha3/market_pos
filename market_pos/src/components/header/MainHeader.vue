@@ -1,5 +1,16 @@
 <script setup>
 
+import { computed, onMounted, onUnmounted } from 'vue'
+import { useDateAndTimeStore } from '@/stores/date_and_time'
+
+const dateAndTimeStore = useDateAndTimeStore()
+
+const formattedDate = computed(() => {
+  return `${dateAndTimeStore.formattedDate()}`
+})
+
+formattedDate.value = formattedDate
+
 defineProps({
   username: {
     type: String,
@@ -15,6 +26,16 @@ defineProps({
   }
 })
 
+let timer
+
+onMounted(() => {
+  timer = setInterval(dateAndTimeStore.updateTime, 6000)
+})
+
+onUnmounted(() => {
+  clearInterval(timer)
+})
+
 </script>
 
 <template>
@@ -27,7 +48,7 @@ defineProps({
                     <RouterLink v-if="current_page != 'dashboard' && user_clocked_in == true" to="/dashboard"><font-awesome-icon icon="fa-solid fa-house" /> Dashboard</RouterLink>
                 </div>
                 <div class="date-container">
-                    Saturday, June 29, 2024
+                    <span class="datae" v-html:="formattedDate"></span>
                 </div>
                 <div class="user-container" v-if="current_page != 'front_door'">
                     <span class="welcome-message"></span>
