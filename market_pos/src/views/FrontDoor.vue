@@ -31,9 +31,9 @@ const user = useUserStore()
               <div class="input-btn" btn-value="7">7</div>
               <div class="input-btn" btn-value="8">8</div>
               <div class="input-btn" btn-value="9">9</div>
-              <div class="input-btn back-btn" btn-value="back">b</div>
+              <div class="input-btn back-btn" btn-value="back"><font-awesome-icon icon="fa-solid fa-arrow-left" /></div>
               <div class="input-btn" btn-value="0">0</div>
-              <div class="input-btn go-btn" btn-value="go">g</div>
+              <div class="input-btn go-btn" btn-value="go"><RouterLink to="/waiting_room"><font-awesome-icon icon="fa-solid fa-arrow-right" /></RouterLink></div>
             </div>
           </div>
         </div>
@@ -107,6 +107,10 @@ const user = useUserStore()
   .input-btn:hover{
     background-color: rgba(255,255,255,0.9);
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
+  }
+  .input-btn a{
+    color: unset;
+    text-decoration: unset;
   }
 
   .input-btn.back-btn, .input-btn.go-btn{

@@ -21,9 +21,9 @@ defineProps({
         <div class="container">
             <div class="header-inner">
                 <div id="return-btn" v-if="current_page != 'front_door'">
-                    <RouterLink v-if="current_page == 'waiting_room' || current_page == 'dashboard'" to="/">exit</RouterLink>
-                    <RouterLink v-if="current_page == 'dashboard'" to="/waiting_room">logout</RouterLink>
-                    <RouterLink v-if="current_page != 'dashboard' && user_clocked_in == true" to="/dashboard">to dash</RouterLink>
+                    <RouterLink v-if="current_page == 'waiting_room' || current_page == 'dashboard'" title="Exit" to="/"><font-awesome-icon icon="fa-solid fa-right-from-bracket" /> Exit</RouterLink>
+                    <RouterLink v-if="current_page == 'dashboard'" title="Clock Out" to="/waiting_room"><font-awesome-icon icon="fa-solid fa-clock-rotate-left" /> Clockout</RouterLink>
+                    <RouterLink v-if="current_page != 'dashboard' && user_clocked_in == true" to="/dashboard"><font-awesome-icon icon="fa-solid fa-house" /> Dashboard</RouterLink>
                 </div>
                 <div class="date-container">
                     Saturday, June 29, 2024
@@ -57,16 +57,40 @@ header .container{
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .header-inner > div{
     flex-basis: 33%;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 #return-btn{
     justify-content: flex-start;
+    column-gap: 30px;
+}
+#return-btn a{
+    color: var(--color-text);
+    text-decoration: none;
+    transition: 0.3s all;
+
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 12px;
+    line-height: 16px;
+}
+#return-btn a svg{
+    font-size: 16px;
+    line-height: 16px;
+}
+#return-btn a:hover{
+    color: #fff;
 }
 .header-inner .user-container{
     justify-content: flex-end;
+    font-size: 12px;
+    line-height: 16px;
+
 }
 </style>

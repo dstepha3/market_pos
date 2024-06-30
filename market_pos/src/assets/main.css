@@ -16,7 +16,13 @@
   background: linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.35) 100%),url('https://troyersdutchmarket.com/wp-content/uploads/2023/04/old-black-bamboo-background-design-as-background-min-scaled.jpg');    background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  min-height: 95vh;
 }
+
+.fa-right-from-bracket{
+  transform: rotate(180deg);
+}
+
 /* 
 a,
 .green {
