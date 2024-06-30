@@ -1,7 +1,9 @@
 <script setup>
 import Header from '../components/header/MainHeader.vue'
 import Time from '../components/timeclock/TimeBlock.vue'
-import WaitingRoomBlock from '../components/timeclock/WaitingRoomBlock.vue'
+import ButtonBlock from '../components/timeclock/ButtonBlock.vue'
+import MessageBlock from '../components/timeclock/MessageBlock.vue'
+import ActivityBlock from '../components/timeclock/ActivityBlock.vue'
 import { useUserStore } from '@/stores/user'
 import { useStoreInfoStore } from '@/stores/store'
 
@@ -12,29 +14,22 @@ const user = useUserStore()
 
 <template>
   <main>
-    <Header :username="user.username" :user_clocked_in='user.user_clocked_in' current_page="waiting_room" />
+    <Header :username="user.username" :user_clocked_in='user.user_clocked_in' :user_on_break='user.user_on_break' current_page="waiting_room" />
 
     <div class="body">
       <div class="container">
-        <div class="waiting-room">
-          <Time :store_name="store.name" />
-          <WaitingRoomBlock />
+        <div class="two-col-entry-layout">
+          <div class="left-col">
+            <Time :store_name="store.name" />
+            <MessageBlock messages="hi" />
+          </div>
+          <div class="right-col">
+            <ButtonBlock :user_clocked_in='user.user_clocked_in' :user_on_break='user.user_on_break' />
+            <ActivityBlock />
+          </div>
         </div>
       </div>
     </div>
     
   </main>
 </template>
-
-<style scoped>
-.waiting-room{
-  display: flex;
-  column-gap: 80px;
-  height: 100%;
-  align-items: flex-start;
-  justify-content: center;
-  /* background-color: rgba(255,255,255,0.4);
-  padding: 60px 80px;
-  border-radius: 20px; */
-}
-</style>

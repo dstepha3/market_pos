@@ -20,6 +20,10 @@ defineProps({
     type: Boolean,
     required: true
   },
+  user_on_break: {
+    type: Boolean,
+    required: true
+  },
   current_page: {
     type: String,
     required: true
@@ -45,7 +49,7 @@ onUnmounted(() => {
                 <div id="return-btn" v-if="current_page != 'front_door'">
                     <RouterLink v-if="current_page == 'waiting_room' || current_page == 'dashboard'" title="Exit" to="/"><font-awesome-icon icon="fa-solid fa-right-from-bracket" /> Exit</RouterLink>
                     <RouterLink v-if="current_page == 'dashboard'" title="Clock Out" to="/waiting_room"><font-awesome-icon icon="fa-solid fa-clock-rotate-left" /> Clockout</RouterLink>
-                    <RouterLink v-if="current_page != 'dashboard' && user_clocked_in == true" to="/dashboard"><font-awesome-icon icon="fa-solid fa-house" /> Dashboard</RouterLink>
+                    <RouterLink v-if="current_page != 'dashboard' && user_clocked_in == true && user_on_break == false" to="/dashboard"><font-awesome-icon icon="fa-solid fa-house" /> Dashboard</RouterLink>
                 </div>
                 <div class="date-container">
                     <span class="datae" v-html:="formattedDate"></span>

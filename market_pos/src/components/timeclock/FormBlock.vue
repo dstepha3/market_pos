@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="login-container">
+    <div class="col-block">
         <div id="input-display"></div>
         <div id="login-input-container">
             <div class="input-btn" btn-value="1">1</div>
@@ -25,14 +25,9 @@
 </template>
 
 <style scoped>
-  .login-container{
+  .col-block{
     max-width: 455px;
-    width: 100%;
-
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 3px solid #0d0d0d;
-    padding: 60px 80px;
-    border-radius: 20px;
+    padding: 60px 40px;
   }
   input{
     max-width: 100%;
@@ -83,7 +78,6 @@
     color: unset;
     text-decoration: unset;
   }
-
   .input-btn.back-btn, .input-btn.go-btn{
     background-color: rgba(128, 0, 0, 0.8);
   }
