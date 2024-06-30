@@ -6,7 +6,7 @@ const dateAndTimeStore = useDateAndTimeStore()
 
 const formattedTime = computed(() => {
   const pad = (num) => num.toString().padStart(2, '0')
-  return `${dateAndTimeStore.formattedHours()}<span style="padding-bottom:15px;">:</span>${pad(dateAndTimeStore.minutes)}<span style="padding-bottom:15px;">:</span>${pad(dateAndTimeStore.seconds)}`
+  return `${dateAndTimeStore.formattedHours()}<span style="padding-bottom:10px;">:</span>${pad(dateAndTimeStore.minutes)}<span style="padding-bottom:10px;">:</span>${pad(dateAndTimeStore.seconds)}`
 })
 
 formattedTime.value = formattedTime
@@ -30,36 +30,25 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="time-banner">
-    <div class="container">
-      <div class="timeclock_time">
-        <span class="time-container" v-html:="formattedTime"></span> {{ dateAndTimeStore.period() }}    
-      </div>
-      <div v-if="store_name" class="store-name">{{ store_name }}</div>
+  <div class="col-block">
+    <div class="timeclock_time">
+      <span class="time-container" v-html:="formattedTime"></span> {{ dateAndTimeStore.period() }}    
     </div>
+    <div v-if="store_name" class="store-name block-heading">{{ store_name }}</div>
   </div>
 </template>
 
 <style scoped>
-#time-banner{
-  width: 100%;
-  padding-bottom: 20px;
-  margin: 0 0 40px;
+.col-block{
+  padding: 20px 40px 30px;
 }
 .timeclock_time{
   font-size: 62px;
   line-height: 1.2;
   border-bottom: 2.5px solid #0d0d0d;
+  padding-bottom: 15px;
   color: #efefef;
   text-align: center;
-}
-.container{
-  width: 100%;
-
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 3px solid #0d0d0d;
-  border-radius: 10px;
-  padding: 20px 30px 30px;
 }
 .time-container{
   display: inline-flex;
@@ -70,8 +59,8 @@ onUnmounted(() => {
 }
 .store-name{
   text-align: center;
-  color: #efefef;
-  font: 400 24px/26px Times;
   margin-top: 20px;
+  padding-bottom: 0 !important;
+  border-bottom: unset !important;
 }
 </style>
