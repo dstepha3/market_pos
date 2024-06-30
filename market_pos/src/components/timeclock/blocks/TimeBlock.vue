@@ -9,6 +9,8 @@ const formattedTime = computed(() => {
   return `${dateAndTimeStore.formattedHours()}<span style="padding-bottom:15px;">:</span>${pad(dateAndTimeStore.minutes)}<span style="padding-bottom:15px;">:</span>${pad(dateAndTimeStore.seconds)}`
 })
 
+formattedTime.value = formattedTime
+
 defineProps({
   store_name: {
     type: String,
