@@ -1,9 +1,7 @@
 <script setup>
-import Header from '../components/Header.vue'
+import Header from '../components/header/Header.vue'
 import { useUserStore } from '@/stores/user'
-import { useCounterStore } from '@/stores/counter'
 
-const counter = useCounterStore()
 const user = useUserStore()
 </script>
 
