@@ -34,92 +34,91 @@ export const useDateAndTimeStore = defineStore('date_and_time', () => {
     var day_name = ''
     var month_name = ''
 
-    switch(day_of_week.value) {
+    switch (day_of_week.value) {
       case 0:
-        day_name = "Sunday"
-        break;
+        day_name = 'Sunday'
+        break
       case 1:
-        day_name = "Monday"
-        break;
+        day_name = 'Monday'
+        break
       case 2:
-        day_name = "Tuesday"
-        break;
+        day_name = 'Tuesday'
+        break
       case 3:
-        day_name = "Wednesday"
-        break;
+        day_name = 'Wednesday'
+        break
       case 4:
-        day_name = "Thursday"
-        break;
+        day_name = 'Thursday'
+        break
       case 5:
-        day_name = "Friday"
-        break;
+        day_name = 'Friday'
+        break
       case 6:
-        day_name = "Saturday"
-        break;
+        day_name = 'Saturday'
+        break
       default:
-        // leave empty
-    } 
+      // leave empty
+    }
 
-    switch(month.value) {
+    switch (month.value) {
       case 1:
-        month_name = "January"
-        break;
+        month_name = 'January'
+        break
       case 2:
-        month_name = "February"
-        break;
+        month_name = 'February'
+        break
       case 3:
-        month_name = "March"
-        break;
+        month_name = 'March'
+        break
       case 4:
-        month_name = "April"
-        break;
+        month_name = 'April'
+        break
       case 5:
-        month_name = "May"
-        break;
+        month_name = 'May'
+        break
       case 6:
-        month_name = "June"
-        break;
+        month_name = 'June'
+        break
       case 7:
-        month_name = "July"
-        break;
+        month_name = 'July'
+        break
       case 8:
-        month_name = "August"
-        break;
+        month_name = 'August'
+        break
       case 9:
-        month_name = "September"
-        break;
+        month_name = 'September'
+        break
       case 10:
-        month_name = "October"
-        break;
+        month_name = 'October'
+        break
       case 11:
-        month_name = "November"
-        break;
+        month_name = 'November'
+        break
       case 12:
-        month_name = "December"
-        break;
+        month_name = 'December'
+        break
       default:
-        // leave empty
-    } 
+      // leave empty
+    }
 
-    return `${(day_name)}, ${(month_name)} ${pad(day.value)}, ${year.value}`
+    return `${day_name}, ${month_name} ${pad(day.value)}, ${year.value}`
   }
 
   const period = () => {
     return hours.value >= 12 ? 'PM' : 'AM'
   }
 
-
-  return { 
-    hours, 
-    minutes, 
-    seconds, 
+  return {
+    hours,
+    minutes,
+    seconds,
     day_of_week,
-    day, 
-    month, 
-    year, 
-    updateTime, 
-    formattedHours, 
-    period, 
-    formattedDate 
+    day,
+    month,
+    year,
+    updateTime,
+    formattedHours,
+    period,
+    formattedDate
   }
 })

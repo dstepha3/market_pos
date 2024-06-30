@@ -23,7 +23,6 @@ import { faX } from '@fortawesome/free-solid-svg-icons'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 
-
 library.add(faUserSecret)
 library.add(faArrowLeft)
 library.add(faArrowRight)

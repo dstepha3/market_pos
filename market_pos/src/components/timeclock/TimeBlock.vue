@@ -32,17 +32,17 @@ onUnmounted(() => {
 <template>
   <div class="col-block">
     <div class="timeclock_time">
-      <span class="time-container" v-html:="formattedTime"></span> {{ dateAndTimeStore.period() }}    
+      <span class="time-container" v-html:="formattedTime"></span> {{ dateAndTimeStore.period() }}
     </div>
     <div v-if="store_name" class="store-name block-heading">{{ store_name }}</div>
   </div>
 </template>
 
 <style scoped>
-.col-block{
+.col-block {
   padding: 20px 40px 30px;
 }
-.timeclock_time{
+.timeclock_time {
   font-size: 62px;
   line-height: 1.2;
   border-bottom: 2.5px solid #0d0d0d;
@@ -50,14 +50,14 @@ onUnmounted(() => {
   color: #efefef;
   text-align: center;
 }
-.time-container{
+.time-container {
   display: inline-flex;
   min-width: 340px;
   margin-right: 0px;
   align-items: center;
   column-gap: 20px;
 }
-.store-name{
+.store-name {
   text-align: center;
   margin-top: 20px;
   padding-bottom: 0 !important;

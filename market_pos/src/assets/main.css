@@ -4,22 +4,24 @@
 /******  APP + BODY  *****/
 /*************************/
 
-main{
+main {
   position: relative;
 }
 #app {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
-#app .body{
+#app .body {
   padding: 55px 0;
-  background: linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.35) 100%),url('https://troyersdutchmarket.com/wp-content/uploads/2023/04/old-black-bamboo-background-design-as-background-min-scaled.jpg');    background-size: cover;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%),
+    url('https://troyersdutchmarket.com/wp-content/uploads/2023/04/old-black-bamboo-background-design-as-background-min-scaled.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   min-height: 94vh;
   /*max-height: calc(100vh - 45px);*/
 }
-.container{
+.container {
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -27,42 +29,42 @@ main{
 /*************************/
 /****   FONTAWESOME   ****/
 /*************************/
-.fa-right-from-bracket{
+.fa-right-from-bracket {
   transform: rotate(180deg);
 }
 
 /*************************/
 /****  ENTRY LAYOUT   ****/
 /*************************/
-.two-col-entry-layout{
+.two-col-entry-layout {
   display: flex;
   column-gap: 60px;
   height: 100%;
   align-items: flex-start;
   justify-content: center;
 }
-.two-col-entry-layout .right-col{
+.two-col-entry-layout .right-col {
   max-width: 455px;
   width: 100%;
 }
-.two-col-entry-layout .left-col{
+.two-col-entry-layout .left-col {
   width: 100%;
   max-width: 765px;
 }
-.two-col-entry-layout .col-block{
+.two-col-entry-layout .col-block {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.2);
   border: 3px solid #0d0d0d;
   border-radius: 20px;
   margin-bottom: 30px;
 }
-.two-col-entry-layout .col-block > :first-child{
+.two-col-entry-layout .col-block > :first-child {
   margin-top: 0 !important;
 }
-.two-col-entry-layout .col-block > :last-child{
+.two-col-entry-layout .col-block > :last-child {
   margin-bottom: 0 !important;
 }
-.two-col-entry-layout .col-block .block-heading{
+.two-col-entry-layout .col-block .block-heading {
   color: #efefef;
   font-size: 18px;
   line-height: 24px;
@@ -72,11 +74,11 @@ main{
   border-bottom: 2.5px solid #0d0d0d;
 }
 
-#modalOverlay{
+#modalOverlay {
   display: none;
   z-index: 30;
 
-  background-color: rgba(13, 13, 13,0.75);
+  background-color: rgba(13, 13, 13, 0.75);
 
   position: absolute;
   top: 0;

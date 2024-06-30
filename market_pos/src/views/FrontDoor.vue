@@ -7,12 +7,15 @@ import { useStoreInfoStore } from '@/stores/store'
 
 const store = useStoreInfoStore()
 const user = useUserStore()
-
 </script>
 
 <template>
   <main>
-    <Header :username="user.username" :user_clocked_in='user.user_clocked_in' current_page="front_door" />
+    <Header
+      :username="user.username"
+      :user_clocked_in="user.user_clocked_in"
+      current_page="front_door"
+    />
 
     <div class="body">
       <div class="container">
@@ -26,6 +29,5 @@ const user = useUserStore()
         </div>
       </div>
     </div>
-
   </main>
 </template>
