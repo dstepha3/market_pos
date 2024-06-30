@@ -15,7 +15,7 @@ const router = createRouter({
       component: () => import('../views/DashboardPage.vue')
     },
     {
-      path: '/waiting_room',
+      path: '/timeclock',
       name: 'waiting_room',
       component: () => import('../views/WaitingRoom.vue')
     }

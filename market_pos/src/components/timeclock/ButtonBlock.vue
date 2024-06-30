@@ -16,7 +16,7 @@ defineProps({
     <div v-if="user_clocked_in == false" id="clockIn" class="btn">Clock In</div>
     <div v-else id="clockOut" class="btn" :class="{ disabled: user_on_break }">Clock Out</div>
 
-    <div v-if="user_on_break == false" id="goBreak" class="btn">Break</div>
+    <div v-if="user_on_break == false" id="goBreak" class="btn" :class="{ disabled: !user_clocked_in }">Break</div>
     <div v-else id="backBreak" class="btn">Return</div>
   </div>
 </template>
@@ -56,19 +56,19 @@ defineProps({
   background-color: maroon;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
 }
-#clockOut.btn.disabled {
-  background-color: gray;
-  color: #333;
-  border-color: #333;
-  opacity: 0.7;
-  cursor: default;
-  pointer-events: none;
-}
 #goBreak.btn {
   background-color: blue;
 }
 #goBreak.btn:hover {
   background-color: navy;
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
+}
+.btn.disabled {
+  background-color: gray !important;
+  color: #333;
+  border-color: #333;
+  opacity: 0.7;
+  cursor: default;
+  pointer-events: none;
 }
 </style>

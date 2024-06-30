@@ -58,12 +58,12 @@ onUnmounted(() => {
             to="/"
             ><font-awesome-icon icon="fa-solid fa-right-from-bracket" /> Exit</RouterLink
           >
-          <RouterLink v-if="current_page == 'dashboard'" title="Clock Out" to="/waiting_room"
-            ><font-awesome-icon icon="fa-solid fa-clock-rotate-left" /> Clockout</RouterLink
+          <RouterLink v-if="current_page == 'dashboard'" title="Clock Out" to="timeclock"
+            ><font-awesome-icon icon="fa-solid fa-clock-rotate-left" /> Timeclock</RouterLink
           >
           <RouterLink
             v-if="current_page != 'dashboard' && user_clocked_in == true && user_on_break == false"
-            to="/dashboard"
+            to="dashboard"
             ><font-awesome-icon icon="fa-solid fa-house" /> Dashboard</RouterLink
           >
         </div>
@@ -129,7 +129,7 @@ header .container {
   column-gap: 13px;
 }
 
-#return-btn #header-time svg,
+#header-time svg,
 #return-btn a svg {
   font-size: 15px;
   line-height: 16px;

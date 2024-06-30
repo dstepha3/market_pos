@@ -20,7 +20,7 @@
       </div>
       <div class="input-btn" btn-value="0">0</div>
       <div class="input-btn go-btn" btn-value="go">
-        <RouterLink to="/waiting_room"
+        <RouterLink to="timeclock"
           ><font-awesome-icon icon="fa-solid fa-arrow-right"
         /></RouterLink>
       </div>
