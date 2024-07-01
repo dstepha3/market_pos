@@ -35,26 +35,26 @@ const user = useUserStore()
   margin: 0 0 20px;
 }
 #clockIn.btn {
-  background-color: green;
+  background-color: var(--color-green);
 }
 #clockIn.btn:hover {
-  background-color: darkgreen;
+  background-color: var(--color-green-dark);
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
 }
 #clockOut.btn,
 #backBreak.btn {
-  background-color: red;
+  background-color: var(--color-red);
 }
 #clockOut.btn:hover,
 #backBreak.btn:hover {
-  background-color: maroon;
+  background-color: var(--color-red-light);
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
 }
 #goBreak.btn {
-  background-color: blue;
+  background-color: var(--color-blue);
 }
 #goBreak.btn:hover {
-  background-color: navy;
+  background-color: var(--color-blue-light);
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
 }
 .btn.disabled {

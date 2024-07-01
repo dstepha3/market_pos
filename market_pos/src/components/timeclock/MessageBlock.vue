@@ -163,5 +163,8 @@ function openModal(x) {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+
+  max-height: 220px;
+  overflow-y: scroll;
 }
 </style>

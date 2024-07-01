@@ -22,6 +22,8 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { faX } from '@fortawesome/free-solid-svg-icons'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
+import { faGear} from '@fortawesome/free-solid-svg-icons'
+
 
 library.add(faUserSecret)
 library.add(faArrowLeft)
@@ -32,6 +34,7 @@ library.add(faHouse)
 library.add(faX)
 library.add(faClock)
 library.add(faCircleExclamation)
+library.add(faGear)
 
 const app = createApp(App)
 

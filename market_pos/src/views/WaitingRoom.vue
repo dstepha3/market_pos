@@ -8,12 +8,10 @@ import MessageBlock from '../components/timeclock/MessageBlock.vue'
 import ActivityBlock from '../components/timeclock/ActivityBlock.vue'
 import MessageModal from '../components/timeclock/MessageModal.vue'
 
-import { useUserStore } from '@/stores/user'
 import { useStoreInfoStore } from '@/stores/store'
 import { useMessageStore } from '@/stores/message'
 
 const store = useStoreInfoStore()
-const user = useUserStore()
 const { messages, addMessage } = useMessageStore()
 
 function addNewMessage() {
@@ -35,9 +33,6 @@ onMounted(() => {
 <template>
   <main>
     <Header
-      :username="user.username"
-      :user_clocked_in="user.user_clocked_in"
-      :user_on_break="user.user_on_break"
       current_page="waiting_room"
     />
 
@@ -49,10 +44,7 @@ onMounted(() => {
             <MessageBlock :messages="messages" />
           </div>
           <div class="right-col">
-            <ButtonBlock
-              :user_clocked_in="user.user_clocked_in"
-              :user_on_break="user.user_on_break"
-            />
+            <ButtonBlock/>
             <ActivityBlock />
           </div>
         </div>

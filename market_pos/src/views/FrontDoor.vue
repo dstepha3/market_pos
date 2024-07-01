@@ -2,18 +2,14 @@
 import Header from '../components/header/MainHeader.vue'
 import Time from '../components/timeclock/TimeBlock.vue'
 import LoginForm from '../components/timeclock/FormBlock.vue'
-import { useUserStore } from '@/stores/user'
 import { useStoreInfoStore } from '@/stores/store'
 
 const store = useStoreInfoStore()
-const user = useUserStore()
 </script>
 
 <template>
   <main>
     <Header
-      :username="user.username"
-      :user_clocked_in="user.user_clocked_in"
       current_page="front_door"
     />
 

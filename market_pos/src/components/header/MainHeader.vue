@@ -1,7 +1,9 @@
 <script setup>
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useDateAndTimeStore } from '@/stores/date_and_time'
+import { useUserStore } from '@/stores/user'
 
+const user = useUserStore()
 const dateAndTimeStore = useDateAndTimeStore()
 
 const formattedDate = computed(() => {
@@ -18,18 +20,6 @@ const formattedTime = computed(() => {
 formattedTime.value = formattedTime
 
 defineProps({
-  username: {
-    type: String,
-    required: true
-  },
-  user_clocked_in: {
-    type: Boolean,
-    required: true
-  },
-  user_on_break: {
-    type: Boolean,
-    required: true
-  },
   current_page: {
     type: String,
     required: true
@@ -58,11 +48,11 @@ onUnmounted(() => {
             to="/"
             ><font-awesome-icon icon="fa-solid fa-right-from-bracket" /> Exit</RouterLink
           >
-          <RouterLink v-if="current_page == 'dashboard'" title="Clock Out" to="timeclock"
+          <RouterLink v-if="current_page == 'dashboard'" title="Timeclock" to="timeclock"
             ><font-awesome-icon icon="fa-solid fa-clock-rotate-left" /> Timeclock</RouterLink
           >
           <RouterLink
-            v-if="current_page != 'dashboard' && user_clocked_in == true && user_on_break == false"
+            v-if="current_page != 'dashboard' && user.user_clocked_in == true && user.user_on_break == false"
             to="dashboard"
             ><font-awesome-icon icon="fa-solid fa-house" /> Dashboard</RouterLink
           >
@@ -75,7 +65,8 @@ onUnmounted(() => {
             <font-awesome-icon icon="fa-solid fa-clock" />
             <span v-html:="formattedTime" class="time"></span> {{ dateAndTimeStore.period() }}
           </div>
-          <span class="username">{{ username }}</span>
+          <RouterLink to="employee"><span class="username">{{ user.username }}</span></RouterLink>
+          <RouterLink v-if="user.userLevel" to="settings" class="settingsBtn" title="System Settings"><font-awesome-icon icon="fa-sold fa-gear" /></RouterLink>
         </div>
       </div>
     </div>
@@ -129,13 +120,16 @@ header .container {
   column-gap: 13px;
 }
 
-#header-time svg,
-#return-btn a svg {
+.header-inner svg{
   font-size: 15px;
   line-height: 16px;
 }
-#return-btn a:hover {
-  color: #fff;
+a{
+  color: var(--color-text);
+  text-decoration: none;
+}
+a:hover {
+  color: #fff !important;
 }
 .header-inner .user-container {
   display: flex;
@@ -156,6 +150,5 @@ header .container {
 }
 #header-time {
   min-width: 70px;
-  max-width: 72px;
 }
 </style>
