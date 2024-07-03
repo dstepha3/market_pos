@@ -1,7 +1,6 @@
 :root{
   --color-background: #181818;
   --color-text-light: rgba(235, 235, 235, 0.64);
-  --color-text: rgba(235, 235, 235, 0.64);
   --color-text-dark: #0d0d0d;
 
   --color-red: #800000;
@@ -15,6 +14,8 @@
   --color-blue: #000080;
   --color-blue-dark: #000040;
   --color-blue-light: #0000b0;
+
+  --color-black: #0d0d0d;
 }
 
 *,

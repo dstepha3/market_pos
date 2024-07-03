@@ -1,5 +1,6 @@
 <script setup>
 import Header from '../components/header/MainHeader.vue'
+import Tile from '../components/dashboard/tile.vue'
 </script>
 
 <template>
@@ -11,12 +12,22 @@ import Header from '../components/header/MainHeader.vue'
     <div class="body">
       <div class="container">
         <div class="dash-grid">
-          <RouterLink class="dash-tile" to="cash-register">Cash Register</RouterLink>
-          <RouterLink class="dash-tile" to="order">Order</RouterLink>
-          <RouterLink class="dash-tile" to="inventory">Inventory</RouterLink>
+          <RouterLink class="dash-tile" to="cash-register">
+            <Tile type="Cash Register" />
+          </RouterLink>
+          <RouterLink class="dash-tile" to="order">
+            <Tile type="Order" />
+          </RouterLink>
+          <RouterLink class="dash-tile" to="inventory">
+            <Tile type="Inventory" />
+          </RouterLink>
 
-          <RouterLink class="dash-tile" to="staff">Staff</RouterLink>
-          <RouterLink class="dash-tile" to="reports">Reports</RouterLink>
+          <RouterLink class="dash-tile" to="staff">
+            <Tile type="Staff" />
+          </RouterLink>
+          <RouterLink class="dash-tile" to="reports">
+            <Tile type="Reports" />
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -43,12 +54,12 @@ import Header from '../components/header/MainHeader.vue'
     display: block;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.55);
-    color: #0d0d0d;
+    color: var(--color-black);;
     opacity: 0.8;
     width: 100%;
     min-height: 300px;
     max-width: 300px;
-    border: 3px solid #0d0d0d;
+    border: 3px solid var(--color-black);;
     border-radius: 10px;
     transition: 0.3s all;
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.35);

@@ -33,7 +33,7 @@ defineProps({})
 }
 .block-heading a {
   font-family: 'Open Sans', sans-serif;
-  color: var(--color-text);
+  color: var(--color-text-light);
   font-size: 12px;
   text-decoration: none;
   transition: 0.3s all;

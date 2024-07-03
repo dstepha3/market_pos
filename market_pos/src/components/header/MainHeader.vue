@@ -76,7 +76,7 @@ onUnmounted(() => {
 <style scoped>
 header {
   padding: 10px 0;
-  background-color: #0d0d0d;
+  background-color: var(--color-black);;
   box-shadow: 5px 0px 8px 5px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 50;
@@ -106,7 +106,7 @@ header .container {
   column-gap: 50px;
 }
 #return-btn * {
-  color: var(--color-text);
+  color: var(--color-text-light);
   text-decoration: none;
   transition: 0.3s all;
 
@@ -125,7 +125,7 @@ header .container {
   line-height: 16px;
 }
 a{
-  color: var(--color-text);
+  color: var(--color-text-light);
   text-decoration: none;
 }
 a:hover {

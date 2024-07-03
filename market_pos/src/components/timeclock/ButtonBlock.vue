@@ -23,12 +23,12 @@ const user = useUserStore()
   display: block;
   padding: 20px;
   text-align: center;
-  border: 6px solid #0d0d0d;
+  border: 6px solid var(--color-black);;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s all;
   font-size: 20px;
-  color: #0d0d0d;
+  color: var(--color-black);;
   text-transform: uppercase;
   font-weight: 700;
 
