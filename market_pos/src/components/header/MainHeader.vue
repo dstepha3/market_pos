@@ -67,7 +67,7 @@ onUnmounted(() => {
           <RouterLink to="employee">
             <span class="username">{{ user.username }}</span>
           </RouterLink>
-          <RouterLink v-if="user.userLevel" to="settings" class="settingsBtn" title="System Settings">
+          <RouterLink v-if="user.userLevel == 'lvl3'" to="settings" class="settingsBtn" title="System Settings">
             <font-awesome-icon icon="fa-solid fa-gear" />
           </RouterLink>
         </div>
