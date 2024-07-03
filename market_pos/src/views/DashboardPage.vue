@@ -7,6 +7,7 @@ import Tile from '../components/dashboard/tile.vue'
   <main>
     <Header
       current_page="dashboard"
+      page_lvl="lvl1"
     />
 
     <div class="body">
