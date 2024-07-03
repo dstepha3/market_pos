@@ -40,10 +40,7 @@ onUnmounted(() => {
     <div class="container">
       <div class="header-inner">
         <div id="return-btn" v-if="current_page != 'front_door'">
-          <RouterLink
-            title="Exit"
-            to="/"
-          >
+          <RouterLink title="Exit" to="/">
             <font-awesome-icon icon="fa-solid fa-right-from-bracket" /> Exit
           </RouterLink>
           <RouterLink v-if="page_lvl == 'lvl1'" title="Timeclock" to="timeclock">
@@ -67,7 +64,12 @@ onUnmounted(() => {
           <RouterLink to="employee">
             <span class="username">{{ user.username }}</span>
           </RouterLink>
-          <RouterLink v-if="user.userLevel == 'lvl3'" to="settings" class="settingsBtn" title="System Settings">
+          <RouterLink
+            v-if="user.userLevel == 'lvl3'"
+            to="settings"
+            class="settingsBtn"
+            title="System Settings"
+          >
             <font-awesome-icon icon="fa-solid fa-gear" />
           </RouterLink>
         </div>

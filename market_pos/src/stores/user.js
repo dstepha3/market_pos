@@ -3,8 +3,7 @@ import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 
 export const useUserStore = defineStore('user', () => {
-
-  const router = useRouter();
+  const router = useRouter()
 
   const userID = ref('0316')
   const userLevel = ref(0)
@@ -20,22 +19,19 @@ export const useUserStore = defineStore('user', () => {
   // }
 
   const userClockIn = () => {
+    const passed = validateUser()
 
-    const passed = validateUser();
-
-    if (passed){
+    if (passed) {
       user_clocked_in.value = true
-      router.push({ name: "dashboard" });
+      router.push({ name: 'dashboard' })
+    } else {
+      return
     }
-    else{
-      return;
-    }
-    
   }
 
   const userClockOut = () => {
     user_clocked_in.value = false
-    router.push({ name: "front_door" });
+    router.push({ name: 'front_door' })
   }
 
   const userGoBreak = () => {
@@ -47,18 +43,18 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const validateUser = () => {
-    if(userID){
-      return true;
+    if (userID) {
+      return true
     }
   }
 
-  return { 
-    userID, 
+  return {
+    userID,
     userLevel,
-    username, 
-    user_clocked_in, 
+    username,
+    user_clocked_in,
     user_on_break,
-  
+
     userClockIn,
     userClockOut,
     userGoBreak,

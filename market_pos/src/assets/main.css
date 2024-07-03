@@ -54,7 +54,7 @@ main {
 .two-col-entry-layout .col-block {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.2);
-  border: 3px solid var(--color-black);;
+  border: 3px solid var(--color-black);
   border-radius: 20px;
   margin-bottom: 30px;
 }
@@ -71,7 +71,7 @@ main {
   font-weight: 400;
   padding-bottom: 20px;
   margin-bottom: 20px;
-  border-bottom: 2.5px solid var(--color-black);;
+  border-bottom: 2.5px solid var(--color-black);
 }
 
 #modalOverlay {
@@ -88,13 +88,13 @@ main {
   height: 100%;
 }
 
-.message .message-heading{
+.message .message-heading {
   font-weight: 800;
-  display:inline-block;
+  display: inline-block;
   margin-right: 15px;
 }
 
-#messageModal .message .message-heading{
+#messageModal .message .message-heading {
   display: block;
   margin-right: 0;
   margin-bottom: 15px;

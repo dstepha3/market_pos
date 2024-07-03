@@ -9,9 +9,7 @@ const store = useStoreInfoStore()
 
 <template>
   <main>
-    <Header
-      current_page="front_door"
-    />
+    <Header current_page="front_door" />
 
     <div class="body">
       <div class="container">

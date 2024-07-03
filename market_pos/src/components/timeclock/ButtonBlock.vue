@@ -1,16 +1,32 @@
 <script setup>
-
 import { useUserStore } from '@/stores/user'
 const user = useUserStore()
-
 </script>
 
 <template>
   <div class="col-block">
-    <div v-if="user.user_clocked_in == false" @click="user.userClockIn()" id="clockIn" class="btn">Clock In</div>
-    <div v-else id="clockOut" @click="user.userClockOut()" class="btn" :class="{ disabled: user.user_on_break }">Clock Out</div>
+    <div v-if="user.user_clocked_in == false" @click="user.userClockIn()" id="clockIn" class="btn">
+      Clock In
+    </div>
+    <div
+      v-else
+      id="clockOut"
+      @click="user.userClockOut()"
+      class="btn"
+      :class="{ disabled: user.user_on_break }"
+    >
+      Clock Out
+    </div>
 
-    <div v-if="user.user_on_break == false" @click="user.userGoBreak()" id="goBreak" class="btn" :class="{ disabled: !user.user_clocked_in }">Break</div>
+    <div
+      v-if="user.user_on_break == false"
+      @click="user.userGoBreak()"
+      id="goBreak"
+      class="btn"
+      :class="{ disabled: !user.user_clocked_in }"
+    >
+      Break
+    </div>
     <div v-else id="backBreak" @click="user.userBackBreak()" class="btn">Return</div>
   </div>
 </template>
@@ -23,12 +39,12 @@ const user = useUserStore()
   display: block;
   padding: 20px;
   text-align: center;
-  border: 6px solid var(--color-black);;
+  border: 6px solid var(--color-black);
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s all;
   font-size: 20px;
-  color: var(--color-black);;
+  color: var(--color-black);
   text-transform: uppercase;
   font-weight: 700;
 

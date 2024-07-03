@@ -22,7 +22,12 @@ function addNewMessage() {
     0
   )
   addMessage('Thanks for chilling', new Date(), 'Daniel Stephan', 1)
-  addMessage('<span class="message-heading">Uniform Time!</span> Click <a target="_blank" href="https://google.com/">HERE</a> to submit your order. Due Oct 31', new Date(), 'Daniel Stephan', 0)
+  addMessage(
+    '<span class="message-heading">Uniform Time!</span> Click <a target="_blank" href="https://google.com/">HERE</a> to submit your order. Due Oct 31',
+    new Date(),
+    'Daniel Stephan',
+    0
+  )
 }
 
 onMounted(() => {
@@ -32,9 +37,7 @@ onMounted(() => {
 
 <template>
   <main>
-    <Header
-      current_page="waiting_room"
-    />
+    <Header current_page="waiting_room" />
 
     <div class="body">
       <div class="container">
@@ -44,7 +47,7 @@ onMounted(() => {
             <MessageBlock :messages="messages" />
           </div>
           <div class="right-col">
-            <ButtonBlock/>
+            <ButtonBlock />
             <ActivityBlock />
           </div>
         </div>

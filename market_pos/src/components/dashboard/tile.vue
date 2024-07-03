@@ -26,32 +26,32 @@ const fa_ico = computed(() => `fa-solid fa-${props.icon_key}`)
 </template>
 
 <style scoped>
-.tile-inner{
+.tile-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.icon-container{
+.icon-container {
   height: 95px;
-  width: 95px;  
+  width: 95px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
 }
-.icon-container svg{
+.icon-container svg {
   height: 100%;
   width: 100%;
 }
-.tile-title{
+.tile-title {
   font-size: 24px;
   font-weight: 800;
 }
-.icon-container .svg-inline--fa.fa-cash-register{
+.icon-container .svg-inline--fa.fa-cash-register {
   width: 85%;
 }
-.icon-container .svg-inline--fa.fa-file-invoice-dollar{
+.icon-container .svg-inline--fa.fa-file-invoice-dollar {
   width: 70%;
 }
 </style>

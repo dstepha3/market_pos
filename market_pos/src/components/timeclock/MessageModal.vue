@@ -64,7 +64,7 @@ function closeModal() {
   font-size: 16px;
   line-height: 18px;
   color: #fff;
-  border: 3px solid var(--color-black);;
+  border: 3px solid var(--color-black);
   border-right-width: 8px;
   border-left-width: 8px;
   border-bottom-width: 10px;
@@ -77,10 +77,10 @@ function closeModal() {
   order: 1 !important;
 }
 .message-meta {
-  border-bottom: 1px solid var(--color-black);;
+  border-bottom: 1px solid var(--color-black);
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-black);;
+  background-color: var(--color-black);
   padding: 20px;
   font-size: 14px;
   line-height: 16px;
@@ -127,7 +127,7 @@ function closeModal() {
   opacity: 1;
   overflow: hidden;
   border-radius: 6px;
-  color: var(--color-black);;
+  color: var(--color-black);
   padding: 20px;
 
   min-height: 150px;

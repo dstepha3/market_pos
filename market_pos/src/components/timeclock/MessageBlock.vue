@@ -37,7 +37,8 @@ function openModal(x) {
 
 <template>
   <div class="col-block">
-    <div class="block-heading">Messages
+    <div class="block-heading">
+      Messages
       <div><RouterLink to="/messages">See All Messages</RouterLink></div>
     </div>
     <div class="all-message-container">
@@ -85,7 +86,7 @@ function openModal(x) {
   font-size: 14px;
   line-height: 16px;
   color: #fff;
-  border: 3px solid var(--color-black);;
+  border: 3px solid var(--color-black);
   border-right-width: 8px;
   border-left-width: 8px;
   border-bottom-width: 8px;
@@ -98,10 +99,10 @@ function openModal(x) {
   order: 1 !important;
 }
 .message-meta {
-  border-bottom: 1px solid var(--color-black);;
+  border-bottom: 1px solid var(--color-black);
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-black);;
+  background-color: var(--color-black);
   padding: 10px;
   font-size: 12px;
   line-height: 14px;
@@ -134,17 +135,17 @@ function openModal(x) {
   opacity: 0.8;
   overflow: hidden;
   border-radius: 6px;
-  color: var(--color-black);;
+  color: var(--color-black);
   padding: 15px 10px;
   cursor: pointer;
   transition: 0.3s all;
   max-height: 47px;
 }
-.message.important .message-text{
+.message.important .message-text {
   display: flex;
   align-items: center;
 }
-.message-text a{
+.message-text a {
   pointer-events: none;
 }
 .message.important .message-text::before {

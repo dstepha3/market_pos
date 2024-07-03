@@ -8,7 +8,7 @@ import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { 
+import {
   faUserSecret,
   faArrowLeft,
   faArrowRight,

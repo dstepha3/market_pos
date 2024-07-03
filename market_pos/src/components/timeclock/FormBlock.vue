@@ -20,9 +20,7 @@
       </div>
       <div class="input-btn" btn-value="0">0</div>
       <div class="input-btn go-btn" btn-value="go">
-        <RouterLink to="timeclock"
-          ><font-awesome-icon icon="fa-solid fa-arrow-right"
-        /></RouterLink>
+        <RouterLink to="timeclock"><font-awesome-icon icon="fa-solid fa-arrow-right" /></RouterLink>
       </div>
     </div>
   </div>
@@ -42,7 +40,7 @@ input {
 #input-display {
   min-height: 50px;
   margin-bottom: 30px;
-  border: 2.5px solid var(--color-black);;
+  border: 2.5px solid var(--color-black);
   background-color: rgba(255, 255, 255, 0.35);
   border-radius: 4px;
 
@@ -62,10 +60,10 @@ input {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-black);;
+  color: var(--color-black);
   height: 90px;
   width: 90px;
-  border: 1px solid var(--color-black);;
+  border: 1px solid var(--color-black);
   background-color: rgba(230, 230, 230, 0.6);
   border-radius: 999px;
   transition: 0.3s all;
