@@ -13,20 +13,20 @@ import Tile from '../components/dashboard/tile.vue'
       <div class="container">
         <div class="dash-grid">
           <RouterLink class="dash-tile" to="cash-register">
-            <Tile type="Cash Register" />
+            <Tile title="Cash Register" icon_key="cash-register" />
           </RouterLink>
           <RouterLink class="dash-tile" to="order">
-            <Tile type="Order" />
+            <Tile title="Order" icon_key="bell-concierge" />
           </RouterLink>
           <RouterLink class="dash-tile" to="inventory">
-            <Tile type="Inventory" />
+            <Tile title="Inventory" icon_key="truck"  />
           </RouterLink>
 
           <RouterLink class="dash-tile" to="staff">
-            <Tile type="Staff" />
+            <Tile title="Staff" icon_key="users" />
           </RouterLink>
           <RouterLink class="dash-tile" to="reports">
-            <Tile type="Reports" />
+            <Tile title="Reports" icon_key="file-invoice-dollar"  />
           </RouterLink>
         </div>
       </div>
@@ -36,6 +36,7 @@ import Tile from '../components/dashboard/tile.vue'
 
 <style scoped>
   .body .container{
+    min-height: 640px;
     max-width: 980px;
     display: flex;
     justify-content: center;

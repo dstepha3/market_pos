@@ -2,39 +2,47 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
 import App from './App.vue'
 import router from './router'
 
-/* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
-
-/* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-/* import specific icons */
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
-import { faX } from '@fortawesome/free-solid-svg-icons'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
-import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
-import { faGear} from '@fortawesome/free-solid-svg-icons'
+import { 
+  faUserSecret,
+  faArrowLeft,
+  faArrowRight,
+  faClockRotateLeft,
+  faRightFromBracket,
+  faHouse,
+  faX,
+  faClock,
+  faCircleExclamation,
+  faGear,
+  faCashRegister,
+  faBellConcierge,
+  faTruck,
+  faUsers,
+  faFileInvoiceDollar
+} from '@fortawesome/free-solid-svg-icons'
 
-
-library.add(faUserSecret)
-library.add(faArrowLeft)
-library.add(faArrowRight)
-library.add(faClockRotateLeft)
-library.add(faRightFromBracket)
-library.add(faHouse)
-library.add(faX)
-library.add(faClock)
-library.add(faCircleExclamation)
-library.add(faGear)
+library.add(
+  faUserSecret,
+  faArrowLeft,
+  faArrowRight,
+  faClockRotateLeft,
+  faRightFromBracket,
+  faHouse,
+  faX,
+  faClock,
+  faCircleExclamation,
+  faGear,
+  faCashRegister,
+  faBellConcierge,
+  faTruck,
+  faUsers,
+  faFileInvoiceDollar
+)
 
 const app = createApp(App)
 
