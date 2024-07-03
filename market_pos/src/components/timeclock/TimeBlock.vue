@@ -45,7 +45,7 @@ onUnmounted(() => {
 .timeclock_time {
   font-size: 62px;
   line-height: 1.2;
-  border-bottom: 2.5px solid #0d0d0d;
+  border-bottom: 2.5px solid var(--color-black);;
   padding-bottom: 15px;
   color: #efefef;
   text-align: center;

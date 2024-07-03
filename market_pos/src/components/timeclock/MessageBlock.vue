@@ -73,7 +73,7 @@ function openModal(x) {
 }
 .block-heading a {
   font-family: 'Open Sans', sans-serif;
-  color: var(--color-text);
+  color: var(--color-text-light);
   font-size: 12px;
   text-decoration: none;
   transition: 0.3s all;
@@ -85,7 +85,7 @@ function openModal(x) {
   font-size: 14px;
   line-height: 16px;
   color: #fff;
-  border: 3px solid #0d0d0d;
+  border: 3px solid var(--color-black);;
   border-right-width: 8px;
   border-left-width: 8px;
   border-bottom-width: 8px;
@@ -98,15 +98,15 @@ function openModal(x) {
   order: 1 !important;
 }
 .message-meta {
-  border-bottom: 1px solid #0d0d0d;
+  border-bottom: 1px solid var(--color-black);;
   display: flex;
   justify-content: space-between;
-  background-color: #0d0d0d;
+  background-color: var(--color-black);;
   padding: 10px;
   font-size: 12px;
   line-height: 14px;
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-text-light);
 
   font-weight: 700;
   opacity: 1;
@@ -114,7 +114,7 @@ function openModal(x) {
 .message.important .message-meta {
   border-color: #600000;
   background-color: #600000;
-  color: var(--color-text);
+  color: var(--color-text-light);
   font-weight: 900;
   opacity: 1;
 }
@@ -134,7 +134,7 @@ function openModal(x) {
   opacity: 0.8;
   overflow: hidden;
   border-radius: 6px;
-  color: #0d0d0d;
+  color: var(--color-black);;
   padding: 15px 10px;
   cursor: pointer;
   transition: 0.3s all;
@@ -163,5 +163,8 @@ function openModal(x) {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+
+  max-height: 220px;
+  overflow-y: scroll;
 }
 </style>

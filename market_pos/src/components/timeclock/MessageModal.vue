@@ -64,7 +64,7 @@ function closeModal() {
   font-size: 16px;
   line-height: 18px;
   color: #fff;
-  border: 3px solid #0d0d0d;
+  border: 3px solid var(--color-black);;
   border-right-width: 8px;
   border-left-width: 8px;
   border-bottom-width: 10px;
@@ -77,15 +77,15 @@ function closeModal() {
   order: 1 !important;
 }
 .message-meta {
-  border-bottom: 1px solid #0d0d0d;
+  border-bottom: 1px solid var(--color-black);;
   display: flex;
   justify-content: space-between;
-  background-color: #0d0d0d;
+  background-color: var(--color-black);;
   padding: 20px;
   font-size: 14px;
   line-height: 16px;
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-text-light);
 
   font-weight: 700;
   opacity: 1;
@@ -93,7 +93,7 @@ function closeModal() {
 .message.important .message-meta {
   border-color: #600000;
   background-color: #600000;
-  color: var(--color-text);
+  color: var(--color-text-light);
   font-weight: 900;
   opacity: 1;
 }
@@ -127,7 +127,7 @@ function closeModal() {
   opacity: 1;
   overflow: hidden;
   border-radius: 6px;
-  color: #0d0d0d;
+  color: var(--color-black);;
   padding: 20px;
 
   min-height: 150px;
