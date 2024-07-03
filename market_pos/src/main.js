@@ -23,7 +23,10 @@ import {
   faBellConcierge,
   faTruck,
   faUsers,
-  faFileInvoiceDollar
+  faFileInvoiceDollar,
+  faLock,
+  faLockOpen,
+  faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -36,12 +39,15 @@ library.add(
   faX,
   faClock,
   faCircleExclamation,
+  faCircleXmark,
   faGear,
   faCashRegister,
   faBellConcierge,
   faTruck,
   faUsers,
-  faFileInvoiceDollar
+  faFileInvoiceDollar,
+  faLock,
+  faLockOpen
 )
 
 const app = createApp(App)

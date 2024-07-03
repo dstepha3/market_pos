@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
   const userID = ref('0316')
   const userLevel = ref(2)
   const username = ref('Daniel Stephan')
-  var user_clocked_in = ref(false)
+  var user_clocked_in = ref(true)
   var user_on_break = ref(false)
 
   // var form_input = ref()
