@@ -6,7 +6,7 @@ export const useUserStore = defineStore('user', () => {
   const router = useRouter()
 
   const userID = ref('0316')
-  const userLevel = ref(0)
+  const userLevel = ref(2)
   const username = ref('Daniel Stephan')
   var user_clocked_in = ref(false)
   var user_on_break = ref(false)
