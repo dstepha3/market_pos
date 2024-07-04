@@ -64,14 +64,24 @@ onUnmounted(() => {
           <RouterLink to="employee">
             <span class="username">{{ user.username }}</span>
           </RouterLink>
-          <RouterLink
-            v-if="user.userLevel"
-            to="settings"
-            class="settingsBtn"
-            title="System Settings"
-          >
-            <font-awesome-icon icon="fa-solid fa-gear" />
-          </RouterLink>
+          <span v-if="user.userLevel">
+            <RouterLink
+              v-if="current_page == 'waiting_room' || current_page == 'dashboard'"
+              to="settings"
+              class="settingsBtn"
+              title="System Settings"
+            >
+              <font-awesome-icon icon="fa-solid fa-gear" />
+            </RouterLink>
+            <div v-else>
+              <div class="adminLockBtn" title="Manager Unlock">
+                <font-awesome-icon icon="fa-solid fa-lock" />
+              </div>
+              <div style="display: none;" class="adminUnlockBtn" title="Manager Lock">
+                <font-awesome-icon icon="fa-solid fa-lock-open" />
+              </div>
+            </div>
+          </span>
         </div>
       </div>
     </div>
@@ -159,5 +169,9 @@ a:hover {
 
 #header-time {
   min-width: 70px;
+}
+
+.adminUnlockBtn, .adminLockBtn{
+  cursor: pointer;
 }
 </style>
