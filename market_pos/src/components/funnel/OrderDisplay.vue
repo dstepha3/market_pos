@@ -13,7 +13,10 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
     <div id="order" :class="[funnel_state.getScannerState, store_state.getStoreState]">
         <div class="order-header">
             <div class="header-left">
-                <div id="addToOrder">Add to Order</div>
+                <Router-Link to="order" id="addToOrder">Add to Order</Router-Link>
+                <div v-if="funnel_state.manager_edit_mode" class="manager-btns">
+                    <div id="adjustOrder">Order Options</div>
+                </div>
             </div>
             <div class="header-right">
                 <div v-if="funnel_state.manager_edit_mode" id="orderLookUp">Lookup Order</div>
@@ -58,6 +61,14 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
         align-items: center;
         justify-content: space-between;
     }
+    .order-header a{
+        text-decoration: none;
+    }
+    .order-header .header-left{
+        display: flex;
+        align-items: flex;
+        column-gap: 15px;
+    }
     #orderLookUp{
         width: 150px;
         padding: 2px;
@@ -84,6 +95,21 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
         cursor: pointer;
         color: rgba(255,255,255,0.8);
         background-color: var(--color-red-light);
+    }
+    #adjustOrder{
+        width: 150px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        border: thick double #000;
+        cursor: pointer;
+        color: rgba(255,255,255,0.8);
+        background-color: var(--color-blue-dark);
+    }
+    #adjustOrder:hover{
+        background-color: var(--color-blue-light);
     }
     .order-list{
         border-top: 1px solid var(--color-black);
@@ -124,7 +150,7 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
         padding: 15px 25px;
     }
     .list-item .order-indent{
-        max-width: 325px;
+        max-width: 313px;
         width: 100%;
         background-color: rgba(255,255,255,0.2);
         background-color: var(--color-red-dark);

@@ -33,7 +33,7 @@ onMounted(() => {
           <OrderView /> 
         </div>
         <div class="cash-reg sidebar">
-          <ItemDisplay parent_view='cash-reg' />
+          <ItemDisplay />
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@ onMounted(() => {
 
 <style scoped>
 .container {
-  min-height: 100vh;
+  min-height: 95vh;
   max-width: 100%;
 }
 .container.grid{

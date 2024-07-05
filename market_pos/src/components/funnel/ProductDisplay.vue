@@ -11,6 +11,17 @@ const temp_tiles = ref(['meat', 'cheese', 'deli', 'trays', 'cookies', '6in pies'
 
 <template>
     <div id="order">
+        <div class="order-header">
+            <div class="header-left">
+                <div id="coupons">Coupons</div>
+                <div v-if="funnel_state.manager_edit_mode" class="manager-btns">
+                    <div id="adjustOrder">Order Options</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <!-- <div v-if="funnel_state.manager_edit_mode" id="orderLookUp">Order Options</div> -->
+            </div>
+        </div>
         <div class="product-grid" :class="[funnel_state.getScannerState, store_state.getStoreState]">
             <div class="grid-item"        
               :class="{ }" v-for="(tile, index) in temp_tiles" :key="index">
@@ -26,7 +37,7 @@ const temp_tiles = ref(['meat', 'cheese', 'deli', 'trays', 'cookies', '6in pies'
         border-right: 1px solid var(--color-black);
     }
     .product-grid{
-        padding: 60px 25px;
+        padding: 25px 25px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(5, 1fr);
@@ -59,5 +70,65 @@ const temp_tiles = ref(['meat', 'cheese', 'deli', 'trays', 'cookies', '6in pies'
         opacity: 1;
         box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.2);
         color:rgba(255, 255, 255, 1);
+    }
+    .order-header{
+        background-color: #888888;
+        height: 59px;
+        padding: 10px 25px;
+        border-bottom: 1px solid var(--color-black);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .order-header .header-left{
+        display: flex;
+        align-items: flex;
+        column-gap: 15px;
+    }
+    #orderLookUp{
+        width: 150px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        border: thick double #000;
+        cursor: pointer;
+        color: rgba(255,255,255,0.8);
+        background-color: var(--color-black);
+    }
+    #orderLookUp:hover{
+        background-color: rgba(0,0,0,0.6);
+    }
+    #adjustOrder{
+        width: 150px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        border: thick double #000;
+        cursor: pointer;
+        color: rgba(255,255,255,0.8);
+        background-color: var(--color-blue-dark);
+    }
+    #adjustOrder:hover{
+        background-color: var(--color-blue-light);
+    }
+    #coupons{
+        width: 150px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        border: thick double #000;
+        cursor: pointer;
+        color: rgba(255,255,255,0.8);
+        background-color: var(--color-red-light);
+    }
+    #coupons:hover{
+        background-color: var(--color-red-dark);
     }
 </style>

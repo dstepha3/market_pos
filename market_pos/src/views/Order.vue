@@ -32,7 +32,7 @@ onMounted(() => {
           <ProductView />
         </div>
         <div class="order sidebar">
-          <ItemDisplay parent_view='order' />
+          <ItemDisplay />
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@ onMounted(() => {
 
 <style scoped>
 .container {
-  min-height: 100vh;
+  min-height: 95vh;
   max-width: 100%;
 }
 .container.grid{
