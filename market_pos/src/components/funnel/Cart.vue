@@ -2,42 +2,12 @@
 
 import { computed } from 'vue'
 import { useStoreStateStore } from '@/stores/store_state'
+import { useFunnelStateStore } from '@/stores/funnel_state'
+import { useOrderStore } from '@/stores/order'
 
 const store_state = useStoreStateStore()
-
-const storeState = store_state.getStoreState()
-const orderState = store_state.order_state
-const orderEditEnabled = store_state.order_edit
-const orderInfo = store_state.currentOrder
-
-
-const grandSubtotal = computed(() => {
-    let total = 0
-    orderInfo.orderProducts.forEach(product => {
-        total = total + product.price
-  });
-
-  orderInfo.orderSubtotal = total
-  return total.toFixed(2)
-})
-
-const grandTax = computed(() => {
-    let total = 0
-    orderInfo.orderProducts.forEach(product => {
-        total = total + product.tax_price
-  });
-
-  orderInfo.orderTax = total
-  return total
-})
-
-const grandTotal = computed(() => {
-  let total = 0
-  total = orderInfo.orderSubtotal + orderInfo.orderTax
-
-  orderInfo.orderGrandTotal = total
-  return total.toFixed(2)
-})
+const funnel_state = useFunnelStateStore()
+const order = useOrderStore()
 
 defineProps({
     parent_view: {
@@ -54,17 +24,17 @@ function toggleStoreState(){
 
 <template>
     <div id="cart" :class="parent_view">
-        <div class="cart-header">
-            <div class="order-number">Order # {{ orderInfo.orderNumber }}</div>
+        <div class="cart-header" :class="funnel_state.getScannerState">
+            <div class="order-number">Order # {{ order.orderNumber }}</div>
             <div class="options">
-                <div id="storeState" :class="storeState">{{ storeState }}</div>
-                <div id="orderState" :class="orderState">{{ orderState }}</div>
+                <div id="storeState" @click="toggleStoreState" :class="store_state.getStoreState">{{ store_state.getStoreState }}</div>
+                <div id="orderState" :class="funnel_state.getScannerState">{{ funnel_state.getScannerState }}</div>
             </div>
         </div>
-        <div class="cart-list">
-            <div class="cart-item" v-for="(cart_item, index) in orderInfo.orderProducts" :key="index">
+        <div class="cart-list" :class="[funnel_state.getScannerState, store_state.getStoreState]">
+            <div class="cart-item" v-for="(cart_item, index) in order.products" :key="index">
                 <div class="item-left">
-                    <div class="remove-btn" v-if="orderEditEnabled"><font-awesome-icon icon="fa-solid fa-circle-xmark" /></div>
+                    <div class="remove-btn" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-circle-xmark" /></div>
                     <div class="item-details">
                         <div class="title">{{ cart_item.name }}</div>
                         <div class="sku"># {{ cart_item.sku }}</div>
@@ -86,16 +56,17 @@ function toggleStoreState(){
                 </div>
             </div>
         </div>
-        <div class="cart-footer">
+        <div class="cart-footer" :class="[funnel_state.getScannerState, store_state.getStoreState]">
             <div class="cart-summary">
-                <div class="discount summary-item"><div class="summary-title">Discount:</div><div>${{ orderInfo.orderDiscount }}</div></div>
-                <div class="subtotal summary-item"><div class="summary-title">Subtotal:</div><div>${{ grandSubtotal }}</div></div>
-                <div class="tax summary-item"><div class="summary-title">Tax:</div><div>${{ grandTax }}</div></div>
-                <div class="grandtotal summary-item"><div class="summary-title">Total:</div><div>${{ grandTotal }}</div></div>
+                <div class="discount summary-item"><div class="summary-title">Discount:</div><div>${{ order.discount }}</div></div>
+                <div class="subtotal summary-item"><div class="summary-title">Subtotal:</div><div>${{ order.subtotal }}</div></div>
+                <div class="tax summary-item"><div class="summary-title">Tax:</div><div>${{ order.tax }}</div></div>
+                <div class="grandtotal summary-item"><div class="summary-title">Total:</div><div>${{ order.grandTotal }}</div></div>
             </div>
             <div class="btn-row">
                 <div id="send-btn" class="btn"><span>Send</span></div>
-                <div id="pay-btn" class="btn"><span>Pay</span></div>
+                <div id="close-order-btn" v-if="order.orderPrePaid" class="btn"><span>Close</span></div>
+                <div id="pay-btn" v-else class="btn"><span>Pay</span></div>
             </div>
         </div>
     </div>
@@ -133,6 +104,7 @@ function toggleStoreState(){
     text-align: center;
     border: thick double #000;
     cursor: pointer;
+    transition: 0.3s all;
 }
 #storeState.open{
     background-color: var(--color-blue-light);
@@ -140,6 +112,14 @@ function toggleStoreState(){
 }
 #storeState.closed{
     background-color: var(--color-red-light);
+}
+#storeState{
+    cursor: default;
+    pointer-events: none;
+}
+.cart-header.editing #storeState{
+    pointer-events: unset;
+    cursor: pointer;
 }
 #orderState{
     width: 150px;
@@ -161,6 +141,10 @@ function toggleStoreState(){
 #orderState.error{
     background-color: var(--color-red-light);
 }
+#orderState.editing{
+    background-color: #e6662a;
+}
+
 #orderState.off{
     background-color: #888888;
     opacity: 0.3;
@@ -172,18 +156,32 @@ function toggleStoreState(){
     font-weight: 700;
 }
 .cart-list{
-    padding: 5px 25px;
+    padding: 5px;
     height: 61vh;
     border-bottom: 1px solid var(--color-black);
     overflow-y: scroll;
 }
+
 .cart-item{
-    padding: 20px 0;
+    padding: 20px;
     border-bottom: 0.5px solid var(--color-black);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.cart-list.editing .cart-item{
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.cart-list.editing .cart-item:hover{
+    background-color: rgba(255,255,255,0.7);
+}
+.cart-footer.editing,
+.cart-list.editing #qtySelector{
+    pointer-events: none;
+    filter: grayscale(1);
+    opacity: 0.3;
 }
 .item-left{
     display: flex;
@@ -294,6 +292,14 @@ function toggleStoreState(){
 }
 .cart-footer{
     padding: 19px 25px 25px;
+    transition: 0.3s all;
+}
+.cart-list.closed,
+.cart-footer.closed{
+    pointer-events: none;
+    cursor: default;
+    filter: grayscale(1);
+    opacity: 0.4;
 }
 .cart-footer .btn-row{
     display: flex;
@@ -328,6 +334,12 @@ function toggleStoreState(){
     background-color: var(--color-green-dark);
     border: 1px solid var(--color-black);
     color: #fff;
+}
+.cart-footer #close-order-btn{
+    display: block;
+    width: 100%;
+    background-color: var(--color-red-light);
+    border: 1px solid var(--color-black);
 }
 .cart-summary{
     display: grid;

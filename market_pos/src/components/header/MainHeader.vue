@@ -2,9 +2,11 @@
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useDateAndTimeStore } from '@/stores/date_and_time'
 import { useUserStore } from '@/stores/user'
+import { useFunnelStateStore } from '@/stores/funnel_state'
 
 const user = useUserStore()
 const dateAndTimeStore = useDateAndTimeStore()
+const funnel_state = useFunnelStateStore()
 
 const formattedDate = computed(() => dateAndTimeStore.formattedDate())
 
@@ -23,6 +25,10 @@ const props = defineProps({
     required: false
   }
 })
+
+function toggleManagerLock(){
+  funnel_state.toggleManagerLock();
+}
 
 let timer
 
@@ -73,11 +79,11 @@ onUnmounted(() => {
             >
               <font-awesome-icon icon="fa-solid fa-gear" />
             </RouterLink>
-            <div v-else>
-              <div class="adminLockBtn" title="Manager Unlock">
+            <div class="lock-icon" v-else>
+              <div v-if="!funnel_state.manager_edit_mode" @click="toggleManagerLock" class="adminLockBtn" title="Manager Unlock">
                 <font-awesome-icon icon="fa-solid fa-lock" />
               </div>
-              <div style="display: none;" class="adminUnlockBtn" title="Manager Lock">
+              <div v-else @click="toggleManagerLock" class="adminUnlockBtn" title="Manager Lock">
                 <font-awesome-icon icon="fa-solid fa-lock-open" />
               </div>
             </div>
@@ -173,5 +179,8 @@ a:hover {
 
 .adminUnlockBtn, .adminLockBtn{
   cursor: pointer;
+}
+.lock-icon{
+  min-width: 17px;
 }
 </style>

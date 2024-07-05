@@ -1,19 +1,20 @@
 <script setup>
 import Header from '../components/header/MainHeader.vue'
-import Tile from '../components/dashboard/tile.vue'
+import OrderView from '../components/funnel/OrderDisplay.vue'
+import ItemDisplay from '../components/funnel/Cart.vue'
 </script>
 
 <template>
   <main>
-    <Header current_page="cash_register" page_lvl="lvl2" />
+    <Header current_page="order" page_lvl="lvl2" />
 
     <div class="body">
       <div class="container grid">
-        <div class="cash-register product-display">
-          Cash Register
+        <div class="cash-reg order-display">
+          <OrderView /> 
         </div>
-        <div class="cash-register sidebar">
-          Sidebar
+        <div class="cash-reg sidebar">
+          <ItemDisplay parent_view='cash-reg' />
         </div>
       </div>
     </div>
@@ -28,6 +29,10 @@ import Tile from '../components/dashboard/tile.vue'
 .container.grid{
   display: grid;
   grid-template-columns: 1fr 500px;
+}
+.sidebar{
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
 }
 #app .body{
   padding: 0;
