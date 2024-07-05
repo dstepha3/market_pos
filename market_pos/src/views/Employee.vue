@@ -1,11 +1,29 @@
 <script setup>
+
+const page = 'employee'
+const page_lvl = 'lvl3'
+
+//* *********************************** *//
+
+import { onMounted } from 'vue'
 import Header from '../components/header/MainHeader.vue'
-import Tile from '../components/dashboard/tile.vue'
+
+import { useStoreStateStore } from '@/stores/store_state'
+
+const store_state = useStoreStateStore()
+
+onMounted(() => {
+  if (store_state){
+   store_state.setCurrentView(page)
+   store_state.setCurrentPageLvl(page_lvl)
+  }
+})
+
 </script>
 
 <template>
   <main>
-    <Header current_page="employee" page_lvl="lvl2" />
+    <Header />
 
     <div class="body">
       <div class="container">Employee Page</div>

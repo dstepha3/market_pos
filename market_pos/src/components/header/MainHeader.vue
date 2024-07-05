@@ -3,27 +3,23 @@ import { computed, onMounted, onUnmounted } from 'vue'
 import { useDateAndTimeStore } from '@/stores/date_and_time'
 import { useUserStore } from '@/stores/user'
 import { useFunnelStateStore } from '@/stores/funnel_state'
+import { useStoreStateStore } from '@/stores/store_state'
 
 const user = useUserStore()
 const dateAndTimeStore = useDateAndTimeStore()
+const store_state = useStoreStateStore()
 const funnel_state = useFunnelStateStore()
 
 const formattedDate = computed(() => dateAndTimeStore.formattedDate())
 
+const currentPage = store_state.current_view
+const currentPageLvl = store_state.current_page_lvl
+const employeeIsClockedIn = user.user_clocked_in
+const employeeIsOnBreak = user.user_on_break
+
 const formattedTime = computed(() => {
   const pad = (num) => num.toString().padStart(2, '0')
   return `${dateAndTimeStore.formattedHours()}<span>:</span>${pad(dateAndTimeStore.minutes)}`
-})
-
-const props = defineProps({
-  current_page: {
-    type: String,
-    required: true
-  },
-  page_lvl: {
-    type: String,
-    required: false
-  }
 })
 
 function toggleManagerLock(){
@@ -45,15 +41,15 @@ onUnmounted(() => {
   <header>
     <div class="container">
       <div class="header-inner">
-        <div id="return-btn" v-if="current_page != 'front_door'">
+        <div id="return-btn" v-if="currentPage != 'front_door'">
           <RouterLink title="Exit" to="/">
             <font-awesome-icon icon="fa-solid fa-right-from-bracket" /> Exit
           </RouterLink>
-          <RouterLink v-if="page_lvl == 'lvl1'" title="Timeclock" to="timeclock">
+          <RouterLink v-if="currentPageLvl == 'lvl1'" title="Timeclock" to="timeclock">
             <font-awesome-icon icon="fa-solid fa-clock-rotate-left" /> Timeclock
           </RouterLink>
           <RouterLink
-            v-if="current_page != 'dashboard' && user.user_clocked_in && !user.user_on_break"
+            v-if="currentPage != 'dashboard' && employeeIsClockedIn && !employeeIsOnBreak"
             to="dashboard"
           >
             <font-awesome-icon icon="fa-solid fa-house" /> Dashboard
@@ -62,8 +58,8 @@ onUnmounted(() => {
         <div class="date-container">
           <span class="date" v-html="formattedDate"></span>
         </div>
-        <div class="user-container" v-if="current_page != 'front_door'">
-          <div v-if="current_page != 'waiting_room'" id="header-time">
+        <div class="user-container" v-if="currentPage != 'front_door'">
+          <div v-if="currentPage != 'waiting_room'" id="header-time">
             <font-awesome-icon icon="fa-solid fa-clock" />
             <span v-html="formattedTime" class="time"></span> {{ dateAndTimeStore.period() }}
           </div>
@@ -72,7 +68,7 @@ onUnmounted(() => {
           </RouterLink>
           <span v-if="user.userLevel">
             <RouterLink
-              v-if="current_page == 'waiting_room' || current_page == 'dashboard'"
+              v-if="currentPage == 'waiting_room' || currentPage == 'dashboard'"
               to="settings"
               class="settingsBtn"
               title="System Settings"
@@ -107,7 +103,8 @@ header {
 }
 
 .container {
-  max-width: 1380px;
+  max-width: 100%;
+  padding: 0 25px;
 }
 
 .header-inner {

@@ -1,6 +1,6 @@
 <script setup>
 
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStoreStateStore } from '@/stores/store_state'
 import { useFunnelStateStore } from '@/stores/funnel_state'
 import { useOrderStore } from '@/stores/order'
@@ -19,6 +19,19 @@ defineProps({
 function toggleStoreState(){
     store_state.toggleStoreState();
 }
+
+function checkScanner(parent_view) {
+    console.log(parent_view)
+if (parent_view === 'cash-reg') {
+    funnel_state.enableViewOnlyScanner()
+    }  else {
+    funnel_state.activateScanner();
+    }
+}
+
+// onMounted(() => {
+//     checkScanner(parentView);
+// });
 
 </script>
 

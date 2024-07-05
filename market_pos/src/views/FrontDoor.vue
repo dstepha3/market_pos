@@ -1,15 +1,32 @@
 <script setup>
+
+const page = 'front_door'
+const page_lvl = ''
+
+//* *********************************** *//
+
+import { onMounted } from 'vue'
 import Header from '../components/header/MainHeader.vue'
 import Time from '../components/timeclock/TimeBlock.vue'
 import LoginForm from '../components/timeclock/FormBlock.vue'
 import { useStoreInfoStore } from '@/stores/store'
+import { useStoreStateStore } from '@/stores/store_state'
 
+const store_state = useStoreStateStore()
 const store = useStoreInfoStore()
+
+onMounted(() => {
+  if (store_state){
+   store_state.setCurrentView(page)
+   store_state.setCurrentPageLvl(page_lvl)
+  }
+})
+
 </script>
 
 <template>
   <main>
-    <Header current_page="front_door" />
+    <Header />
 
     <div class="body">
       <div class="container">

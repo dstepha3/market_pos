@@ -6,6 +6,8 @@ import { defineStore } from 'pinia';
 export const useStoreStateStore = defineStore('storeState', () => {
 
   const store_state = ref(false);
+  const current_view = ref('')
+  const current_page_lvl = ref('')
 
   const getStoreState = computed(() => {
     return store_state.value ? 'open' : 'closed';
@@ -19,9 +21,21 @@ export const useStoreStateStore = defineStore('storeState', () => {
     }
   }
 
+  const setCurrentView = (view) => {
+    current_view.value = view
+  }
+
+  const setCurrentPageLvl = (view) => {
+    current_view.value = view
+  }
+
   return { 
     store_state,
+    current_view,
     getStoreState,
-    toggleStoreState
+    current_page_lvl,
+    toggleStoreState,
+    setCurrentView,
+    setCurrentPageLvl
   };
 });

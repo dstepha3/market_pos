@@ -1,4 +1,9 @@
 <script setup>
+
+const page = 'waiting_room'
+
+//* *********************************** *//
+
 import { onMounted } from 'vue'
 
 import Header from '../components/header/MainHeader.vue'
@@ -8,10 +13,13 @@ import MessageBlock from '../components/timeclock/MessageBlock.vue'
 import ActivityBlock from '../components/timeclock/ActivityBlock.vue'
 import MessageModal from '../components/timeclock/MessageModal.vue'
 
+import { useStoreStateStore } from '@/stores/store_state'
 import { useStoreInfoStore } from '@/stores/store'
 import { useMessageStore } from '@/stores/message'
 
+
 const store = useStoreInfoStore()
+const store_state = useStoreStateStore()
 const { messages, addMessage } = useMessageStore()
 
 function addNewMessage() {
@@ -32,12 +40,18 @@ function addNewMessage() {
 
 onMounted(() => {
   addNewMessage()
+
+  if (store_state){
+    store_state.setCurrentView(page)
+    store_state.setCurrentPageLvl(page_lvl)
+  }
 })
+
 </script>
 
 <template>
   <main>
-    <Header current_page="waiting_room" />
+    <Header />
 
     <div class="body">
       <div class="container">

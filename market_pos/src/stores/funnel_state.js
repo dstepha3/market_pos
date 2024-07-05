@@ -28,6 +28,8 @@ export const useFunnelStateStore = defineStore('funnelState', () => {
                 return 'ready'
             case 3:
                 return 'editing'
+            case 4:
+                return 'cash register'
             default:
                 return 'unknown error'; 
         }
@@ -59,6 +61,10 @@ export const useFunnelStateStore = defineStore('funnelState', () => {
 
       const enableEditScanner = () => {
         barcode_scanner.value = 3
+      }
+
+      const enableViewOnlyScanner = () => {
+        barcode_scanner.value = 4
       }
 
   return { 

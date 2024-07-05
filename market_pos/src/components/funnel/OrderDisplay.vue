@@ -61,6 +61,7 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
         text-transform: uppercase;
         text-align: center;
         border: thick double #000;
+        cursor: pointer;
         color: rgba(255,255,255,0.8);
         background-color: var(--color-red-dark);
     }

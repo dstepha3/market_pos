@@ -1,12 +1,31 @@
 <script setup>
+
+const page = 'cash-reg'
+const page_lvl = 'lvl2'
+
+//* *********************************** *//
+
+import { onMounted } from 'vue'
 import Header from '../components/header/MainHeader.vue'
 import OrderView from '../components/funnel/OrderDisplay.vue'
 import ItemDisplay from '../components/funnel/Cart.vue'
+
+import { useStoreStateStore } from '@/stores/store_state'
+
+const store_state = useStoreStateStore()
+
+onMounted(() => {
+  if (store_state){
+    store_state.setCurrentView(page)
+    store_state.setCurrentPageLvl(page_lvl)
+  }
+})
+
 </script>
 
 <template>
   <main>
-    <Header current_page="order" page_lvl="lvl2" />
+    <Header />
 
     <div class="body">
       <div class="container grid">
