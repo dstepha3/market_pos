@@ -1,6 +1,6 @@
 <script setup>
 
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 import { useStoreStateStore } from '@/stores/store_state'
 import { useFunnelStateStore } from '@/stores/funnel_state'
 import { useOrderStore } from '@/stores/order'
@@ -9,34 +9,23 @@ const store_state = useStoreStateStore()
 const funnel_state = useFunnelStateStore()
 const order = useOrderStore()
 
-defineProps({
-    parent_view: {
-    type: String,
-    required: true
-  }
-})
-
 function toggleStoreState(){
     store_state.toggleStoreState();
 }
 
-function checkScanner(parent_view) {
-    console.log(parent_view)
-if (parent_view === 'cash-reg') {
-    funnel_state.enableViewOnlyScanner()
-    }  else {
-    funnel_state.activateScanner();
-    }
-}
+onMounted(() => {
+    funnel_state.enableViewOnlyScanner();
+});
 
-// onMounted(() => {
-//     checkScanner(parentView);
-// });
+onUnmounted(() => {
+  funnel_state.activateScanner();
+})
+
 
 </script>
 
 <template>
-    <div id="cart" :class="parent_view">
+    <div id="cart" :class="store_state.current_view">
         <div class="cart-header" :class="funnel_state.getScannerState">
             <div class="order-number">Order # {{ order.orderNumber }}</div>
             <div class="options">

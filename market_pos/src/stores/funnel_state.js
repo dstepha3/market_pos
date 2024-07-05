@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { ref, computed, onUnmounted } from 'vue';
 import { defineStore } from 'pinia';
 
 import { useStoreStateStore } from '@/stores/store_state'
@@ -64,7 +64,9 @@ export const useFunnelStateStore = defineStore('funnelState', () => {
       }
 
       const enableViewOnlyScanner = () => {
-        barcode_scanner.value = 4
+        if (store_state.current_view == 'cash-reg'){
+          barcode_scanner.value = 4
+        }
       }
 
   return { 
@@ -74,6 +76,7 @@ export const useFunnelStateStore = defineStore('funnelState', () => {
     activateScanner,
     deactivateScanner,
     enableEditScanner,
+    enableViewOnlyScanner,
     toggleManagerLock
   };
 });

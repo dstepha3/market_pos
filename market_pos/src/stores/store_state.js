@@ -25,8 +25,8 @@ export const useStoreStateStore = defineStore('storeState', () => {
     current_view.value = view
   }
 
-  const setCurrentPageLvl = (view) => {
-    current_view.value = view
+  const setCurrentPageLvl = (val) => {
+    current_page_lvl.value = val
   }
 
   return { 

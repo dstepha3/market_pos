@@ -19,6 +19,8 @@ export const useOrderStore = defineStore('order', () => {
   const orderOpen = ref(true)
   const orderName = ref('')
 
+  const orderIsSelected = ref(false)
+
   const subtotal = computed(() => {
     return products.value.reduce((total, product) => {
       return total + product.price * product.quantity;

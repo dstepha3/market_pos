@@ -12,7 +12,12 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
 <template>
     <div id="order" :class="[funnel_state.getScannerState, store_state.getStoreState]">
         <div class="order-header">
-            <div id="orderLookUp">Lookup Order</div>
+            <div class="header-left">
+                <div id="addToOrder">Add to Order</div>
+            </div>
+            <div class="header-right">
+                <div v-if="funnel_state.manager_edit_mode" id="orderLookUp">Lookup Order</div>
+            </div>
         </div>
         <div class="order-list">
             <div class="list-item" :class="{ }" v-for="(tile, index) in temp_tiles" :key="index">
@@ -63,9 +68,21 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
         border: thick double #000;
         cursor: pointer;
         color: rgba(255,255,255,0.8);
-        background-color: var(--color-red-dark);
+        background-color: var(--color-black);
     }
     #orderLookUp:hover{
+        background-color: rgba(0,0,0,0.6);
+    }
+    #addToOrder{
+        width: 150px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        border: thick double #000;
+        cursor: pointer;
+        color: rgba(255,255,255,0.8);
         background-color: var(--color-red-light);
     }
     .order-list{

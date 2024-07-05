@@ -1,6 +1,7 @@
 <script setup>
 
 const page = 'waiting_room'
+const page_lvl = ''
 
 //* *********************************** *//
 
