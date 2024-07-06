@@ -1,13 +1,12 @@
 <script setup>
 
-const page = 'employee'
+const page = 'settings'
 const page_lvl = 'lvl3'
 
 //* *********************************** *//
 
 import { onMounted } from 'vue'
-import Header from '../components/header/MainHeader.vue'
-
+import Header from '../../components/header/MainHeader.vue'
 import { useStoreStateStore } from '@/stores/store_state'
 
 const store_state = useStoreStateStore()
@@ -26,7 +25,7 @@ onMounted(() => {
     <Header />
 
     <div class="body">
-      <div class="container">Employee Page</div>
+      <div class="container">Settings</div>
     </div>
   </main>
 </template>

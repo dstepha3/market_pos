@@ -18,8 +18,9 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
                     <div id="adjustOrder">Order Options</div>
                 </div>
             </div>
-            <div class="header-right">
-                <div v-if="funnel_state.manager_edit_mode" id="orderLookUp">Lookup Order</div>
+            <div v-if="funnel_state.manager_edit_mode" class="header-right">
+                <div id="orderLookUp">Lookup Order</div>
+                <div id="payInOut">Pay in / Pay Out</div>
             </div>
         </div>
         <div class="order-list">
@@ -64,7 +65,8 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
     .order-header a{
         text-decoration: none;
     }
-    .order-header .header-left{
+    .order-header .header-left,
+    .order-header .header-right{
         display: flex;
         align-items: flex;
         column-gap: 15px;
@@ -83,6 +85,21 @@ const temp_tiles = ref(['Order # ', 'Order # ', 'Order # ', 'Order # ', 'Order #
     }
     #orderLookUp:hover{
         background-color: rgba(0,0,0,0.6);
+    }
+    #payInOut{
+        width: 150px;
+        padding: 2px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        border: thick double #000;
+        cursor: pointer;
+        color: rgba(255,255,255,0.8);
+        background-color: var(--color-green);
+    }
+    #payInOut:hover{
+        background-color: var(--color-green-dark);
     }
     #addToOrder{
         width: 150px;

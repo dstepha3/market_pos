@@ -1,49 +1,17 @@
 <script setup>
 
-const page = 'inventory-categories'
-const page_lvl = 'lvl4'
+const page = 'inventory'
+const page_lvl = 'lvl3'
 
 //* *********************************** *//
 
 import { onMounted } from 'vue'
-import Header from '@/components/header/MainHeader.vue'
-import AddCategoryModal from '@/components/Inventory/AddCategoryModal.vue'
-import EditCategoryModal from '@/components/Inventory/EditCategoryModal.vue'
+import Header from '../../components/header/MainHeader.vue'
 import { useStoreStateStore } from '@/stores/store_state'
 import { useFunnelStateStore } from '@/stores/funnel_state'
 
 const store_state = useStoreStateStore()
 const funnel_state = useFunnelStateStore()
-
-function openAddModal() {
-  let modal = document.getElementById('addModal')
-  let overlay = document.getElementById('modalOverlay')
-
-  if (modal) {
-
-    if (overlay) {
-      overlay.style.display = 'block'
-      overlay.style.opacity = '1'
-    }
-
-    modal.style.display = 'block'
-  }
-}
-
-function openEditModal() {
-  let modal = document.getElementById('editModal')
-  let overlay = document.getElementById('modalOverlay')
-
-  if (modal) {
-
-    if (overlay) {
-      overlay.style.display = 'block'
-      overlay.style.opacity = '1'
-    }
-
-    modal.style.display = 'block'
-  }
-}
 
 onMounted(() => {
   if (store_state){
@@ -62,22 +30,36 @@ onMounted(() => {
       <div class="container">
         <div class="inventory-header">
           <div class="header-left">
-            <div class="heading">Product Categories</div>
+            <div class="heading">Inventory</div>
           </div>
           <div class="header-right">
-            <Router-Link to="/inventory" id="manage">Return to Inventory</Router-Link>
+            <Router-Link to="/inventory/alerts" id="alerts" ><font-awesome-icon icon="fa-solid fa-circle-exclamation" /></Router-Link>
+            <Router-Link to="/inventory/truck" id="addTruck" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-truck" /></Router-Link>
+            <Router-Link to="/inventory/categories" id="manage" v-if="funnel_state.manager_edit_mode">Manage Categories</Router-Link>
           </div>
         </div>
         <div class="inventory-body">
           <div class="product-filters">
             <div class="filters-left">
               <div id="searchBar">
-                <input class="searchInput" type="text" placeholder="Search Categories">
+                <input class="searchInput" type="text" placeholder="Search Products">
                 <div class="search-decoration"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></div>
               </div>
+              <div id="scan"><font-awesome-icon icon="fa-solid fa-barcode" /></div>
             </div>
             <div class="filters-right">
-              <div @click="openAddModal" id="addProduct"><font-awesome-icon icon="fa-solid fa-plus" /> Add Category</div>
+              <div id="addProduct" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-plus" /> Add Product</div>
+              <div class="filters">
+                <div id="filterByCategory">
+                  <select name="cars" id="cars">
+                    <option value="">Filter by Category</option>
+                    <option value="Category">Category</option>
+                    <option value="Category">Category</option>
+                    <option value="Category">Category</option>
+                    <option value="Category">Category</option>
+                  </select> 
+                </div>
+              </div>
             </div>
           </div>
 
@@ -85,100 +67,61 @@ onMounted(() => {
             <div class="item-list-head">
               <div class="item-left">
                 <div class="edit-btn"></div>
-                <div class="title">Category Name</div>
+                <div class="title">Item Name</div>
               </div>
               <div class="item-right">
-                <div class="position">Position</div>
-                <div class="numOfProducts"># Products</div>
+                <div class="barcode"># Barcode</div>
+                <div class="category">Category</div>
+                <div class="price">Price</div>
+                <div class="numInStock"># In Stock</div>
                 <div class="availability">Available</div>
               </div>
             </div>
 
-            <div class="item" style="border-left: 10px solid #800000;">
+            <div class="item">
               <div class="item-left">
-                <div @click="openEditModal" class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Category</div>
+                <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
+                <div class="title">Item</div>
               </div>
               <div class="item-right">
-                <div class="position">1</div>
-                <div class="numOfProducts">32</div>
+                <div class="barcode">789435978325489</div>
+                <div class="category">Category</div>
+                <div class="price">$9.99</div>
+                <div class="price">32</div>
                 <div class="availability">
                   <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
                   <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
                 </div>
               </div>
             </div>
-
-            <div class="item category-lvl2" style="border-left: 10px solid #800000;">
+            <div class="item">
               <div class="item-left">
-                <div @click="openEditModal" class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Sub-Category</div>
+                <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
+                <div class="title">Item</div>
               </div>
               <div class="item-right">
-                <div class="position">1</div>
-                <div class="numOfProducts">14</div>
+                <div class="barcode">789435978325489</div>
+                <div class="category">Category</div>
+                <div class="price">$9.99</div>
+                <div class="price">32</div>
                 <div class="availability">
-                  <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
-                  <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
+                  <span class="available" style="display: none;"><font-awesome-icon  icon="fa-solid fa-square-check" /></span>
+                  <span class="not-available"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
                 </div>
               </div>
             </div>
-
-            <div class="item category-lvl2" style="border-left: 10px solid #800000;">
+            <div class="item">
               <div class="item-left">
-                <div @click="openEditModal" class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Sub-Category</div>
+                <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
+                <div class="title">Item</div>
               </div>
               <div class="item-right">
-                <div class="position">2</div>
-                <div class="numOfProducts">13</div>
+                <div class="barcode">789435978325489</div>
+                <div class="category">Category</div>
+                <div class="price">$9.99</div>
+                <div class="price">32</div>
                 <div class="availability">
-                  <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
-                  <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="item category-lvl2" style="border-left: 10px solid #080000;">
-              <div class="item-left">
-                <div @click="openEditModal" class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Sub-Category</div>
-              </div>
-              <div class="item-right">
-                <div class="position">3</div>
-                <div class="numOfProducts">5</div>
-                <div class="availability">
-                  <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
-                  <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="item" style="border-left: 10px solid #000080;">
-              <div class="item-left">
-                <div @click="openEditModal" class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Category</div>
-              </div>
-              <div class="item-right">
-                <div class="position">2</div>
-                <div class="numOfProducts">5</div>
-                <div class="availability">
-                  <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
-                  <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="item" style="border-left: 10px solid #008000;">
-              <div class="item-left">
-                <div @click="openEditModal" class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Category</div>
-              </div>
-              <div class="item-right">
-                <div class="position">3</div>
-                <div class="numOfProducts">17</div>
-                <div class="availability">
-                  <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
+                  <span class="available"><font-awesome-icon  icon="fa-solid fa-square-check" /></span>
                   <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
                 </div>
               </div>
@@ -190,18 +133,10 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
-    <AddCategoryModal />
-    <EditCategoryModal />
-    <div id="modalOverlay"></div>
   </main>
 </template>
 
 <style scoped>
-
-#modalOverlay{
-  z-index: 60;
-}
 .body .container {
   min-height: 640px;
   max-width: 1280px;
@@ -387,24 +322,17 @@ input::placeholder{
   box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.35);
 }
 .item-container .item{
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.95);
   color: #000;
   border-radius: 6px;
   border: 0.75px solid var(--color-black);  
   margin-bottom: 15px;
-}
-.item.category-lvl2{
-  margin-left: 40px;
 }
 .item-container > :last-child{
   margin-bottom: 0;
 }
 .item-container .item div{
   font-size: 12px;
-  font-weight: 900;
-}
-.item-container .item.category-lvl2 div{
-  font-weight: 400;
 }
 .item-container .item,
 .item-container .item-list-head{
@@ -453,7 +381,7 @@ input::placeholder{
 }
 .item .title{
   text-transform: uppercase;
-  font-weight: 700 !important;
+  font-weight: 700;
   font-size: 14px;
 }
 .availability svg,

@@ -15,7 +15,7 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('../views/DashboardPage.vue'),
+      component: () => import('../views/Dashboard.vue'),
       meta: {
         title: 'Dashboard | Market POS',
         description: ''
@@ -33,7 +33,7 @@ const router = createRouter({
     {
       path: '/cash-register',
       name: 'cash_register',
-      component: () => import('../views/CashRegister.vue'),
+      component: () => import('../views/Funnel/CashRegister.vue'),
       meta: {
         title: 'Cash Register | Market POS',
         description: ''
@@ -42,7 +42,7 @@ const router = createRouter({
     {
       path: '/order',
       name: 'order',
-      component: () => import('../views/Order.vue'),
+      component: () => import('../views/Funnel/Order.vue'),
       meta: {
         title: 'Order | Market POS',
         description: ''
@@ -51,7 +51,7 @@ const router = createRouter({
     {
       path: '/inventory',
       name: 'inventory',
-      component: () => import('../views/Inventory.vue'),
+      component: () => import('../views/Inventory/Inventory.vue'),
       meta: {
         title: 'Inventory | Market POS',
         description: ''
@@ -87,7 +87,7 @@ const router = createRouter({
     {
       path: '/staff',
       name: 'staff_management',
-      component: () => import('../views/StaffManagement.vue'),
+      component: () => import('../views/HR/StaffManagement.vue'),
       meta: {
         title: 'Staff Management | Market POS',
         description: ''
@@ -96,7 +96,7 @@ const router = createRouter({
     {
       path: '/employee',
       name: 'employee',
-      component: () => import('../views/Employee.vue'),
+      component: () => import('../views/HR/Employee.vue'),
       meta: {
         title: `Hello {{ USERNAME }} | Market POS`,
         description: ''
@@ -105,7 +105,7 @@ const router = createRouter({
     {
       path: '/reports',
       name: 'reports',
-      component: () => import('../views/Reports.vue'),
+      component: () => import('../views/Admin/Reports.vue'),
       meta: {
         title: 'Reports | Market POS',
         description: ''
@@ -114,7 +114,7 @@ const router = createRouter({
     {
       path: '/settings',
       name: 'settings',
-      component: () => import('../views/Settings.vue'),
+      component: () => import('../views/Admin/Settings.vue'),
       meta: {
         title: 'Settings | Market POS',
         description: ''

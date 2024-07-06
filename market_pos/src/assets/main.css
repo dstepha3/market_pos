@@ -80,6 +80,8 @@ main {
 
   background-color: rgba(13, 13, 13, 0.75);
 
+  pointer-events: unset;
+
   position: absolute;
   top: 0;
   left: 0;

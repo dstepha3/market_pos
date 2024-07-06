@@ -1,12 +1,12 @@
 <script setup>
 
-const page = 'inventory'
+const page = 'staff_management'
 const page_lvl = 'lvl3'
 
 //* *********************************** *//
 
 import { onMounted } from 'vue'
-import Header from '../components/header/MainHeader.vue'
+import Header from '@/components/header/MainHeader.vue'
 import { useStoreStateStore } from '@/stores/store_state'
 import { useFunnelStateStore } from '@/stores/funnel_state'
 
@@ -30,36 +30,23 @@ onMounted(() => {
       <div class="container">
         <div class="inventory-header">
           <div class="header-left">
-            <div class="heading">Inventory</div>
+            <div class="heading">Manage Staff</div>
           </div>
-          <div class="header-right">
-            <Router-Link to="/inventory/alerts" id="alerts" ><font-awesome-icon icon="fa-solid fa-circle-exclamation" /></Router-Link>
-            <Router-Link to="/inventory/truck" id="addTruck" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-truck" /></Router-Link>
-            <Router-Link to="/inventory/categories" id="manage" v-if="funnel_state.manager_edit_mode">Manage Categories</Router-Link>
+          <div class="header-right" v-if="funnel_state.manager_edit_mode">
+            <Router-Link  to="/messages" id="manage">Messages</Router-Link>
+            <Router-Link to="/reports/payroll" id="payroll">PayRoll</Router-Link>
           </div>
         </div>
         <div class="inventory-body">
           <div class="product-filters">
             <div class="filters-left">
               <div id="searchBar">
-                <input class="searchInput" type="text" placeholder="Search Products">
+                <input class="searchInput" type="text" placeholder="Search Employees">
                 <div class="search-decoration"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></div>
               </div>
-              <div id="scan"><font-awesome-icon icon="fa-solid fa-barcode" /></div>
             </div>
             <div class="filters-right">
-              <div id="addProduct" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-plus" /> Add Product</div>
-              <div class="filters">
-                <div id="filterByCategory">
-                  <select name="cars" id="cars">
-                    <option value="">Filter by Category</option>
-                    <option value="Category">Category</option>
-                    <option value="Category">Category</option>
-                    <option value="Category">Category</option>
-                    <option value="Category">Category</option>
-                  </select> 
-                </div>
-              </div>
+              <div id="addProduct" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-plus" /> Add Employee</div>
             </div>
           </div>
 
@@ -67,27 +54,23 @@ onMounted(() => {
             <div class="item-list-head">
               <div class="item-left">
                 <div class="edit-btn"></div>
-                <div class="title">Item Name</div>
+                <div class="title">Employee Name</div>
               </div>
               <div class="item-right">
-                <div class="barcode"># Barcode</div>
-                <div class="category">Category</div>
-                <div class="price">Price</div>
-                <div class="numInStock"># InStock</div>
-                <div class="availability">Available</div>
+                <div class="empTitle">Title</div>
+                <div class="userID">User ID</div>
+                <div class="availability">Active</div>
               </div>
             </div>
 
             <div class="item">
               <div class="item-left">
                 <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Item</div>
+                <div class="title">Jane Doe</div>
               </div>
               <div class="item-right">
-                <div class="barcode">789435978325489</div>
-                <div class="category">Category</div>
-                <div class="price">$9.99</div>
-                <div class="price">32</div>
+                <div class="empTitle">Assistant Manager</div>
+                <div class="userID">3431</div>
                 <div class="availability">
                   <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
                   <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
@@ -97,31 +80,27 @@ onMounted(() => {
             <div class="item">
               <div class="item-left">
                 <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Item</div>
+                <div class="title">Jane Doe</div>
               </div>
               <div class="item-right">
-                <div class="barcode">789435978325489</div>
-                <div class="category">Category</div>
-                <div class="price">$9.99</div>
-                <div class="price">32</div>
+                <div class="empTitle">Assistant Manager</div>
+                <div class="userID">3431</div>
                 <div class="availability">
-                  <span class="available" style="display: none;"><font-awesome-icon  icon="fa-solid fa-square-check" /></span>
-                  <span class="not-available"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
+                  <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
+                  <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
                 </div>
               </div>
             </div>
             <div class="item">
               <div class="item-left">
                 <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Item</div>
+                <div class="title">Jane Doe</div>
               </div>
               <div class="item-right">
-                <div class="barcode">789435978325489</div>
-                <div class="category">Category</div>
-                <div class="price">$9.99</div>
-                <div class="price">32</div>
+                <div class="empTitle">Assistant Manager</div>
+                <div class="userID">3431</div>
                 <div class="availability">
-                  <span class="available"><font-awesome-icon  icon="fa-solid fa-square-check" /></span>
+                  <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
                   <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
                 </div>
               </div>
@@ -167,7 +146,7 @@ onMounted(() => {
   line-height: 48px;
   color: #fff;
 }
-#manage{
+#manage, #payroll{
   width: 200px;
   padding: 10px;
   font-size: 14px;
@@ -180,42 +159,15 @@ onMounted(() => {
   background-color: var(--color-blue-light);
   transition: 0.1s all;
 }
+#payroll{
+  background-color: var(--color-green);
+}
 #manage:hover{
   background-color: var(--color-blue-dark);
 }
-#addTruck{
-  width: 50px;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-align: center;
-  border: thick double #000;
-  cursor: pointer;
-  color: rgba(255,255,255,1);
-  background-color: var(--color-green-light);
-  transition: 0.1s all;
-}
-#addTruck:hover{
+#payroll:hover{
   background-color: var(--color-green-dark);
 }
-#alerts{
-  width: 50px;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-align: center;
-  border: thick double #000;
-  cursor: pointer;
-  color: rgba(255,255,255,1);
-  background-color: var(--color-red-light);
-  transition: 0.1s all;
-}
-#alerts:hover{
-  background-color: var(--color-red-dark);
-}
-#scan,
 #addProduct{
   width: 160px;
   min-height: 42px;
@@ -235,17 +187,9 @@ onMounted(() => {
   column-gap: 8px;
   transition: 0.1s all;
 }
-#scan{
-  min-width: 60px;
-  width: unset;
-}
-#scan svg{
-  font-size: 18px;
-}
 #addProduct svg{
   font-size: 10px;
 }
-#scan:hover,
 #addProduct:hover{
   background-color: rgba(255,255,255,0.85);
 }
@@ -283,10 +227,6 @@ select{
 
 input::placeholder{
   opacity: 1;
-}
-#filterByCategory{
-  min-width: 200px;
-  appearance: none;
 }
 #searchBar{
   display: block;
@@ -365,8 +305,8 @@ input::placeholder{
   min-width: 120px;
   text-align: center;
 }
-.item-container .item-list-head .item-right > div.barcode,
-.item .item-right > div.barcode{
+.item-container .item-list-head .item-right > div.empTitle,
+.item .item-right > div.empTitle{
   min-width: 200px;
   text-align: left;
 }
@@ -404,6 +344,6 @@ input::placeholder{
   color: var(--color-green);
 }
 .availability .not-available{
-  color: var(--color-red-light);
+  color: #696969;
 }
 </style>

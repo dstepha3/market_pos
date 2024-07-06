@@ -24,6 +24,7 @@ import {
   faBellConcierge,
   faTruck,
   faUsers,
+  faFileContract,
   faFileInvoiceDollar,
   faLock,
   faLockOpen,
@@ -31,7 +32,12 @@ import {
   faMagnifyingGlass,
   faSquareCheck,
   faSquareXmark,
-  faBarcode
+  faBarcode,
+  faMoneyCheckDollar,
+  faReceipt,
+  faTruckRampBox,
+  faCalendarDay,
+  faChartPie
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -51,13 +57,19 @@ library.add(
   faBellConcierge,
   faTruck,
   faUsers,
+  faFileContract,
   faFileInvoiceDollar,
   faLock,
   faLockOpen,
   faMagnifyingGlass,
   faSquareCheck,
   faSquareXmark,
-  faBarcode
+  faBarcode,
+  faMoneyCheckDollar,
+  faReceipt,
+  faTruckRampBox,
+  faCalendarDay,
+  faChartPie
 )
 
 const app = createApp(App)

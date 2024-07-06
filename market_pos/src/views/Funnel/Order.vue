@@ -6,9 +6,9 @@ const page_lvl = 'lvl3'
 //* *********************************** *//
 
 import { onMounted } from 'vue'
-import Header from '../components/header/MainHeader.vue'
-import ProductView from '../components/funnel/ProductDisplay.vue'
-import ItemDisplay from '../components/funnel/Cart.vue'
+import Header from '../../components/header/MainHeader.vue'
+import ProductView from '../../components/funnel/ProductDisplay.vue'
+import ItemDisplay from '../../components/funnel/Cart.vue'
 import { useStoreStateStore } from '@/stores/store_state'
 
 const store_state = useStoreStateStore()
