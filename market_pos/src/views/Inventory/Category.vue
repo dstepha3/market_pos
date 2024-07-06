@@ -1,12 +1,12 @@
 <script setup>
 
-const page = 'inventory'
-const page_lvl = 'lvl3'
+const page = 'inventory-categories'
+const page_lvl = 'lvl4'
 
 //* *********************************** *//
 
 import { onMounted } from 'vue'
-import Header from '../components/header/MainHeader.vue'
+import Header from '@/components/header/MainHeader.vue'
 import { useStoreStateStore } from '@/stores/store_state'
 import { useFunnelStateStore } from '@/stores/funnel_state'
 
@@ -30,36 +30,22 @@ onMounted(() => {
       <div class="container">
         <div class="inventory-header">
           <div class="header-left">
-            <div class="heading">Inventory</div>
+            <div class="heading">Product Categories</div>
           </div>
           <div class="header-right">
-            <Router-Link to="/inventory/alerts" id="alerts" ><font-awesome-icon icon="fa-solid fa-circle-exclamation" /></Router-Link>
-            <Router-Link to="/inventory/truck" id="addTruck" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-truck" /></Router-Link>
-            <Router-Link to="/inventory/categories" id="manage" v-if="funnel_state.manager_edit_mode">Manage Categories</Router-Link>
+            <Router-Link to="/inventory" id="manage">Return to Inventory</Router-Link>
           </div>
         </div>
         <div class="inventory-body">
           <div class="product-filters">
             <div class="filters-left">
               <div id="searchBar">
-                <input class="searchInput" type="text" placeholder="Search Products">
+                <input class="searchInput" type="text" placeholder="Search Categories">
                 <div class="search-decoration"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></div>
               </div>
-              <div id="scan"><font-awesome-icon icon="fa-solid fa-barcode" /></div>
             </div>
             <div class="filters-right">
-              <div id="addProduct" v-if="funnel_state.manager_edit_mode"><font-awesome-icon icon="fa-solid fa-plus" /> Add Product</div>
-              <div class="filters">
-                <div id="filterByCategory">
-                  <select name="cars" id="cars">
-                    <option value="">Filter by Category</option>
-                    <option value="Category">Category</option>
-                    <option value="Category">Category</option>
-                    <option value="Category">Category</option>
-                    <option value="Category">Category</option>
-                  </select> 
-                </div>
-              </div>
+              <div id="addProduct"><font-awesome-icon icon="fa-solid fa-plus" /> Add Category</div>
             </div>
           </div>
 
@@ -90,38 +76,6 @@ onMounted(() => {
                 <div class="price">32</div>
                 <div class="availability">
                   <span class="available"><font-awesome-icon icon="fa-solid fa-square-check" /></span>
-                  <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-left">
-                <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Item</div>
-              </div>
-              <div class="item-right">
-                <div class="barcode">789435978325489</div>
-                <div class="category">Category</div>
-                <div class="price">$9.99</div>
-                <div class="price">32</div>
-                <div class="availability">
-                  <span class="available" style="display: none;"><font-awesome-icon  icon="fa-solid fa-square-check" /></span>
-                  <span class="not-available"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-left">
-                <div class="edit-btn"><font-awesome-icon v-if="funnel_state.manager_edit_mode" icon="fa-solid fa-gear" /></div>
-                <div class="title">Item</div>
-              </div>
-              <div class="item-right">
-                <div class="barcode">789435978325489</div>
-                <div class="category">Category</div>
-                <div class="price">$9.99</div>
-                <div class="price">32</div>
-                <div class="availability">
-                  <span class="available"><font-awesome-icon  icon="fa-solid fa-square-check" /></span>
                   <span class="not-available" style="display: none;"><font-awesome-icon icon="fa-solid fa-square-xmark" /></span>
                 </div>
               </div>

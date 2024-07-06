@@ -58,6 +58,33 @@ const router = createRouter({
       }
     },
     {
+      path: '/inventory/alerts',
+      name: 'inventory_alerts',
+      component: () => import('../views/Inventory/LowStockAlert.vue'),
+      meta: {
+        title: 'Low Stock Alerts | Market POS',
+        description: ''
+      }
+    },
+    {
+      path: '/inventory/categories',
+      name: 'inventory_categories',
+      component: () => import('../views/Inventory/Category.vue'),
+      meta: {
+        title: 'Low Stock Alerts | Market POS',
+        description: ''
+      }
+    },
+    {
+      path: '/inventory/truck',
+      name: 'inventory_truck',
+      component: () => import('../views/Inventory/ImportTruck.vue'),
+      meta: {
+        title: 'Import Truck | Market POS',
+        description: ''
+      }
+    },
+    {
       path: '/staff',
       name: 'staff_management',
       component: () => import('../views/StaffManagement.vue'),

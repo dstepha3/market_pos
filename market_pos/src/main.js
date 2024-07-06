@@ -15,6 +15,7 @@ import {
   faClockRotateLeft,
   faRightFromBracket,
   faHouse,
+  faPlus,
   faX,
   faClock,
   faCircleExclamation,
@@ -26,7 +27,11 @@ import {
   faFileInvoiceDollar,
   faLock,
   faLockOpen,
-  faCircleXmark
+  faCircleXmark,
+  faMagnifyingGlass,
+  faSquareCheck,
+  faSquareXmark,
+  faBarcode
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -36,6 +41,7 @@ library.add(
   faClockRotateLeft,
   faRightFromBracket,
   faHouse,
+  faPlus,
   faX,
   faClock,
   faCircleExclamation,
@@ -47,7 +53,11 @@ library.add(
   faUsers,
   faFileInvoiceDollar,
   faLock,
-  faLockOpen
+  faLockOpen,
+  faMagnifyingGlass,
+  faSquareCheck,
+  faSquareXmark,
+  faBarcode
 )
 
 const app = createApp(App)

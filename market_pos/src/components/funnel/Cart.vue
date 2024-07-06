@@ -179,7 +179,7 @@ onUnmounted(() => {
 .cart-list.editing .cart-item:hover{
     background-color: rgba(255,255,255,0.7);
 }
-.cart-footer.editing,
+.cart-footer.editing .btn-row,
 .cart-list.editing #qtySelector{
     pointer-events: none;
     filter: grayscale(1);

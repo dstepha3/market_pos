@@ -45,7 +45,7 @@ onUnmounted(() => {
           </RouterLink>
           <RouterLink
             v-if="store_state.current_view != 'dashboard' && user.user_clocked_in && !user.user_on_break"
-            to="dashboard"
+            to="/dashboard"
           >
             <font-awesome-icon icon="fa-solid fa-house" /> Dashboard
           </RouterLink>
@@ -58,13 +58,13 @@ onUnmounted(() => {
             <font-awesome-icon icon="fa-solid fa-clock" />
             <span v-html="formattedTime" class="time"></span> {{ dateAndTimeStore.period() }}
           </div>
-          <RouterLink to="employee">
+          <RouterLink to="/employee">
             <span class="username">{{ user.username }}</span>
           </RouterLink>
           <span v-if="user.userLevel">
             <RouterLink
               v-if="store_state.current_view == 'waiting_room' ||  store_state.current_view == 'dashboard'"
-              to="settings"
+              to="/settings"
               class="settingsBtn"
               title="System Settings"
             >
@@ -174,5 +174,12 @@ a:hover {
 }
 .lock-icon{
   min-width: 17px;
+}
+
+.settingsBtn{
+  transition: 0.3s all;
+}
+.settingsBtn:hover{
+  transform: rotate(90deg);
 }
 </style>

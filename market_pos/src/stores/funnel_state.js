@@ -64,6 +64,7 @@ export const useFunnelStateStore = defineStore('funnelState', () => {
       }
 
       const enableViewOnlyScanner = () => {
+        console.log(store_state.current_view)
         if (store_state.current_view == 'cash-reg'){
           barcode_scanner.value = 4
         }
